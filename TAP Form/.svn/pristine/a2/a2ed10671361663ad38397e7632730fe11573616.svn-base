@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="addEditTAPEmpFormPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XXSSHR_TAP_EMP_FORM_VO" RangeSize="25" DataControl="Oando_AMDataControl"
+              id="XXSSHR_TAP_EMP_FORM_VOIterator"/>
+    <iterator Binds="XXSSHR_TAP_EMP_LINES_VO" RangeSize="25" DataControl="Oando_AMDataControl"
+              id="XXSSHR_TAP_EMP_LINES_VOIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="Name_Trns">
+      <AttrNames>
+        <Item Value="Name_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="Number_Trns">
+      <AttrNames>
+        <Item Value="Number_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="Email_Trns">
+      <AttrNames>
+        <Item Value="Email_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="Group_Trns">
+      <AttrNames>
+        <Item Value="Group_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="ApprovalStatus">
+      <AttrNames>
+        <Item Value="ApprovalStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="ApproverComments">
+      <AttrNames>
+        <Item Value="ApproverComments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="TapEmpFormNo">
+      <AttrNames>
+        <Item Value="TapEmpFormNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="TransactionDate">
+      <AttrNames>
+        <Item Value="TransactionDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="XXSSHR_TAP_EMP_LINES_VOIterator" id="XXSSHR_TAP_EMP_LINES_VO">
+      <nodeDefinition DefName="model.vo.XXSSHR_TAP_EMP_LINES_VO" Name="XXSSHR_TAP_EMP_LINES_VO0">
+        <AttrNames>
+          <Item Value="AvailableFlag" Binds="AvailableFlag"/>
+          <Item Value="Months"/>
+          <Item Value="DonationAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="XXSSHR_TAP_EMP_LINES_VOIterator" id="CreateInsert"
+            InstanceName="Oando_AMDataControl.XXSSHR_TAP_EMP_LINES_VO" DataControl="Oando_AMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="XXSSHR_TAP_EMP_LINES_VOIterator" id="Delete"
+            InstanceName="Oando_AMDataControl.XXSSHR_TAP_EMP_LINES_VO" DataControl="Oando_AMDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <button IterBinding="XXSSHR_TAP_EMP_LINES_VOIterator" id="AvailableFlag" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="AvailableFlag"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="Trans_Cadre">
+      <AttrNames>
+        <Item Value="Trans_Cadre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="BusinessUnitId">
+      <AttrNames>
+        <Item Value="BusinessUnitId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="PersonId">
+      <AttrNames>
+        <Item Value="PersonId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="TapEmpFormId">
+      <AttrNames>
+        <Item Value="TapEmpFormId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_LINES_VOIterator" id="TapEmpFormId1">
+      <AttrNames>
+        <Item Value="TapEmpFormId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_LINES_VOIterator" id="TapEmpLineId">
+      <AttrNames>
+        <Item Value="TapEmpLineId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

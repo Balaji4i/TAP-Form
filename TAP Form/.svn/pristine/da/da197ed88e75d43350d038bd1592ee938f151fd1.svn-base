@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="AddEditDuty_BTF">
+    <default-activity>decider</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__12">
+      <name>mode</name>
+      <value>#{pageFlowScope.mode}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__13">
+      <name>headerId</name>
+      <value>#{pageFlowScope.headerId}</value>
+      <class>java.math.BigDecimal</class>
+    </input-parameter-definition>
+    <managed-bean id="__14">
+      <managed-bean-name>AddEditDuty</managed-bean-name>
+      <managed-bean-class>view.AddEditDuty</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="AddEditDuty">
+      <page>/fragment/AddEditDuty.jsff</page>
+    </view>
+    <router id="decider">
+      <case id="__10">
+        <expression>#{pageFlowScope.mode eq 'add'}</expression>
+        <outcome>add</outcome>
+      </case>
+      <case id="__11">
+        <expression>#{pageFlowScope.mode eq 'edit'}</expression>
+        <outcome>edit</outcome>
+      </case>
+      <default-outcome>add</default-outcome>
+    </router>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-return id="back">
+      <outcome>
+        <name>back</name>
+      </outcome>
+    </task-flow-return>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateWithParameters">
+      <method>#{bindings.CreateWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="setOrgId">
+      <method>#{backingBeanScope.AddEditDuty.setOrgId}</method>
+      <outcome>
+        <fixed-outcome>set</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>decider</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>edit</from-outcome>
+        <to-activity-id>ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__2">
+        <from-outcome>add</from-outcome>
+        <to-activity-id>setOrgId</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>AddEditDuty</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>AddEditDuty</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>back</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>ExecuteWithParams</from-outcome>
+        <to-activity-id>AddEditDuty</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__17">
+      <from-activity-id>CreateWithParameters</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome>CreateWithParams</from-outcome>
+        <to-activity-id>AddEditDuty</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__15">
+      <from-activity-id>setOrgId</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome>set</from-outcome>
+        <to-activity-id>AddEditDuty</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

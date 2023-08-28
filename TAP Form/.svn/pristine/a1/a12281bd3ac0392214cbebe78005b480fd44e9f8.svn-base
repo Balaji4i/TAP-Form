@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="searchPayrollPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Payroll_VO" RangeSize="25" DataControl="Oando_AMDataControl" id="Payroll_VOIterator"/>
+    <iterator Binds="Payroll_ROVO" RangeSize="25" DataControl="Oando_AMDataControl" id="Payroll_ROVOIterator"/>
+    <searchRegion Criteria="SearchVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="Payroll_ROVOIterator" id="SearchVCQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Payroll_ROVOIterator" id="Payroll_ROVO">
+      <nodeDefinition DefName="model.ro.Payroll_ROVO" Name="Payroll_ROVO0">
+        <AttrNames>
+          <Item Value="ExtraDutyAllowanceNo"/>
+          <Item Value="PersonNumber"/>
+          <Item Value="FullName"/>
+          <Item Value="EmailAddress"/>
+          <Item Value="BusinessUnitName"/>
+          <Item Value="RequestDate"/>
+          <Item Value="AllowanceType"/>
+          <Item Value="AllowanceRate"/>
+          <Item Value="ElementName"/>
+          <Item Value="ApprovalStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Payroll_ROVOIterator" id="ExtraDutyAllowanceId">
+      <AttrNames>
+        <Item Value="ExtraDutyAllowanceId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

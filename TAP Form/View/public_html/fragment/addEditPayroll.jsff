@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <?audit suppress oracle.ide.xml.validation-error?>
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+     <f:facet name="pageContents">
+            <af:panelBox id="pb1" showDisclosure="false">
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow marginTop="5px" height="auto" id="gr1">
+                        <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2">
+                            <af:outputText value="Payroll" id="ot1"
+                                           inlineStyle="font-size:large; font-weight:bold"/>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+                        <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc4">
+                            <af:panelGroupLayout id="pgl2" layout="horizontal" halign="end">
+                                <af:button text="Save &amp; Submit" id="b3"
+                                           actionListener="#{backingBeanScope.AddEditPayroll.onClickSubmit}"
+                                           
+                                      />
+                                <af:spacer width="10" height="10" id="s2"/>
+                                <af:button text="Cancel" id="b1"
+                                           actionListener="#{backingBeanScope.AddEditPayroll.onClickCancel}"
+                                           immediate="true" action="back"></af:button>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+                    
+                <af:spacer width="10" height="10" id="s1"/>
+                <af:spacer width="10" height="10" id="s3"/>
+                <af:panelBox showDisclosure="false" inlineStyle="border-color:transparent;" id="pb2">
+                    <f:facet name="toolbar">
+                        <af:table value="#{bindings.Payroll_ROVO.collectionModel}" var="row"
+                                  rows="#{bindings.Payroll_ROVO.rangeSize}"
+                                  emptyText="#{bindings.Payroll_ROVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.Payroll_ROVO.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.Payroll_ROVO.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.Payroll_ROVO.rangeSize}" id="t1">
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.ExtraDutyAllowanceNo.label}" id="c1"
+                                       width="100">
+                                <af:outputText value="#{row.ExtraDutyAllowanceNo}"
+                                               shortDesc="#{bindings.Payroll_ROVO.hints.ExtraDutyAllowanceNo.tooltip}"
+                                               id="ot2"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.PersonNumber.label}" id="c2" width="100">
+                                <af:outputText value="#{row.PersonNumber}"
+                                               shortDesc="#{bindings.Payroll_ROVO.hints.PersonNumber.tooltip}"
+                                               id="ot3"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.FullName.label}" id="c3" width="150">
+                                <af:outputText value="#{row.FullName}"
+                                               shortDesc="#{bindings.Payroll_ROVO.hints.FullName.tooltip}" id="ot4"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.EmailAddress.label}" id="c4" width="150">
+                                <af:outputText value="#{row.EmailAddress}"
+                                               shortDesc="#{bindings.Payroll_ROVO.hints.EmailAddress.tooltip}"
+                                               id="ot5"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.BusinessUnitName.label}" id="c5" width="150">
+                                <af:outputText value="#{row.BusinessUnitName}"
+                                               shortDesc="#{bindings.Payroll_ROVO.hints.BusinessUnitName.tooltip}"
+                                               id="ot6"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.RequestDate.label}" id="c6" width="150">
+                                <af:outputText value="#{row.RequestDate}"
+                                               shortDesc="#{bindings.Payroll_ROVO.hints.RequestDate.tooltip}" id="ot7">
+                                    <af:convertDateTime pattern="#{bindings.Payroll_ROVO.hints.RequestDate.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.AllowanceType.label}" id="c7" width="150">
+                                <af:outputText value="#{row.AllowanceType}"
+                                               shortDesc="#{bindings.Payroll_ROVO.hints.AllowanceType.tooltip}"
+                                               id="ot8"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.AllowanceRate.label}" id="c8" width="150">
+                                <af:outputText value="#{row.AllowanceRate}"
+                                               shortDesc="#{bindings.Payroll_ROVO.hints.AllowanceRate.tooltip}"
+                                               id="ot9">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.Payroll_ROVO.hints.AllowanceRate.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.ElementName.label}" id="c9" width="150">
+                                <af:outputText value="#{row.ElementName}"
+                                               shortDesc="#{bindings.Payroll_ROVO.hints.ElementName.tooltip}"
+                                               id="ot10"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.ApprovalStatus.label}" id="c10" width="150">
+                                <af:outputText value="#{row.ApprovalStatus}"
+                                               shortDesc="#{bindings.Payroll_ROVO.hints.ApprovalStatus.tooltip}"
+                                               id="ot11"/>
+                            </af:column>
+                        </af:table>
+                    </f:facet>
+                    
+            </af:panelBox>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

@@ -1,0 +1,33 @@
+//Groovy Scripts for model.eo.XssshrKbcPeriodEO
+
+package model.eo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="KbcPeriodId")
+def KbcPeriodId_ExpressionScript_Expression()
+{
+new oracle.jbo.server.SequenceImpl("XXSSHR_KBC_PERIOD_S",adf.object.getDBTransaction()).getSequenceNumber()
+}
+
+
+@TransientValueExpression(attributeName="CreatedBy")
+def CreatedBy_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+
+
+@TransientValueExpression(attributeName="LastUpdatedBy")
+def LastUpdatedBy_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+
+
+@TransientValueExpression(attributeName="LastUpdateLogin")
+def LastUpdateLogin_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+

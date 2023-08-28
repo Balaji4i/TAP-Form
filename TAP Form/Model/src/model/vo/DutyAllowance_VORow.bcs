@@ -1,0 +1,12 @@
+//Groovy Scripts for model.vo.DutyAllowance_VO
+
+package model.vo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="TransactionDate")
+def TransactionDate_ExpressionScript_Expression()
+{
+adf.currentDate
+}
+

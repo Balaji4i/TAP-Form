@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="KbcHdrPeroidVL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  EntityAssociation="model.association.Kbc_hdr_Period_Assoc">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.vl.KbcHdrPeroidVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="XxsshrKnowBuddyCareVO"
+    Cardinality="1"
+    Source="true"
+    Owner="model.vo.XxsshrKnowBuddyCareVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="XxsshrKnowBuddyCareVO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.vo.XxsshrKnowBuddyCareVO.KnowBuddyCareId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="XssshrKbcPeriodVO"
+    Cardinality="-1"
+    Owner="model.vo.XssshrKbcPeriodVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="XssshrKbcPeriodVO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.vo.XssshrKbcPeriodVO.KnowBuddyCareId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

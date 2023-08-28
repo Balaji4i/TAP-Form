@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="SearchBuddyFormPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XxsshrKnowBuddyCareVO" RangeSize="25" DataControl="Oando_AMDataControl"
+              id="XxsshrKnowBuddyCareVOIterator"/>
+    <searchRegion Criteria="XxsshrKnowBuddyCareVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="XxsshrKnowBuddyCareVOIterator" id="XxsshrKnowBuddyCareVCQuery"/>
+  </executables>
+  <bindings>
+    <action IterBinding="XxsshrKnowBuddyCareVOIterator" id="Delete"
+            InstanceName="Oando_AMDataControl.XxsshrKnowBuddyCareVO" DataControl="Oando_AMDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="Trans_AssignmentType">
+      <AttrNames>
+        <Item Value="Trans_AssignmentType"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <methodAction id="getAssignmentType" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getAssignmentType"
+                  IsViewObjectMethod="false" DataControl="Oando_AMDataControl"
+                  InstanceName="bindings.getAssignmentType.dataControl.dataProvider"
+                  ReturnName="data.Oando_AMDataControl.methodResults.getAssignmentType_getAssignmentType_dataControl_dataProvider_getAssignmentType_result"/>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="KnowBuddyCareId">
+      <AttrNames>
+        <Item Value="KnowBuddyCareId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="XxsshrKnowBuddyCareVOIterator" id="XxsshrKnowBuddyCareVO">
+      <nodeDefinition DefName="model.vo.XxsshrKnowBuddyCareVO" Name="XxsshrKnowBuddyCareVO0">
+        <AttrNames>
+          <Item Value="KnowBuddyCareId"/>
+          <Item Value="KnowBuddyCareNo"/>
+          <Item Value="TransactionDate"/>
+          <Item Value="Comments"/>
+          <Item Value="ApprovalStatus"/>
+          <Item Value="Name_Trns"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="ApprovalStatus">
+      <AttrNames>
+        <Item Value="ApprovalStatus"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

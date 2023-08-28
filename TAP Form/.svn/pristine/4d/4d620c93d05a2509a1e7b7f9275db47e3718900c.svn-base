@@ -1,0 +1,587 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelBox id="pb1" showDisclosure="false">
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow marginTop="5px" height="auto" id="gr1">
+                        <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2">
+                            <af:outputText value="Oando Extra Duty Allowance" id="ot1"
+                                           inlineStyle="font-size:large; font-weight:bold"/>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+                        <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc4">
+                            <af:panelGroupLayout id="pgl2" layout="horizontal" halign="right">
+                                <af:button text="Save" id="b3"
+                                           actionListener="#{backingBeanScope.AddEditDuty.onClickSave}"
+                                            disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'PAYROLL ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'CANCELLED'
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                      />
+                                <af:spacer width="10" height="10" id="s2"/>
+                                <af:button text="Submit" id="b6" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'PAYROLL ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'CANCELLED'
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                           actionListener="#{backingBeanScope.AddEditDuty.onClickSubmit}"
+                                           partialTriggers="pc2:t1"/>
+                                <af:spacer width="10" height="10" id="s4"/>
+                                <af:button text="Cancel" id="b1"
+                                           actionListener="#{backingBeanScope.AddEditDuty.onClickCancel}"
+                                           immediate="true" action="back"></af:button>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+                <af:spacer width="10" height="10" id="s1"/>
+                <af:panelBox showDisclosure="false" inlineStyle="border-color:transparent;" id="pb2">
+                    <f:facet name="toolbar"/>
+                    <af:panelFormLayout id="pfl2" rows="2" maxColumns="2"  fieldWidth="400px">
+                        <af:inputText value="#{bindings.Name_Trns.inputValue}" label="#{bindings.Name_Trns.hints.label}"
+                                      required="#{bindings.Name_Trns.hints.mandatory}" readOnly="true"
+                                      columns="#{bindings.Name_Trns.hints.displayWidth}" contentStyle="width:250px;"
+                                      maximumLength="#{bindings.Name_Trns.hints.precision}"
+                                      shortDesc="#{bindings.Name_Trns.hints.tooltip}" id="it7">
+                            <f:validator binding="#{bindings.Name_Trns.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Email_Trns.inputValue}"
+                                      label="#{bindings.Email_Trns.hints.label}" readOnly="true"
+                                      contentStyle="width:250px;" required="#{bindings.Email_Trns.hints.mandatory}"
+                                      columns="#{bindings.Email_Trns.hints.displayWidth}"
+                                      maximumLength="#{bindings.Email_Trns.hints.precision}"
+                                      shortDesc="#{bindings.Email_Trns.hints.tooltip}" id="it9">
+                            <f:validator binding="#{bindings.Email_Trns.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Trans_Cadre.inputValue}" readOnly="true" label="Cadre"
+                                      contentStyle="width:160px;" autoSubmit="true"
+                                      required="#{bindings.Trans_Cadre.hints.mandatory}"
+                                      columns="#{bindings.Trans_Cadre.hints.displayWidth}"
+                                      maximumLength="#{bindings.Trans_Cadre.hints.precision}"
+                                      shortDesc="#{bindings.Trans_Cadre.hints.tooltip}" id="it2"
+                                      partialTriggers="pc2:t1:trans_AllowanceTypeId">
+                            <f:validator binding="#{bindings.Trans_Cadre.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Number_Trns.inputValue}"
+                                      label="#{bindings.Number_Trns.hints.label}" readOnly="true"
+                                      contentStyle="width:200px;" required="#{bindings.Number_Trns.hints.mandatory}"
+                                      columns="#{bindings.Number_Trns.hints.displayWidth}"
+                                      maximumLength="#{bindings.Number_Trns.hints.precision}"
+                                      shortDesc="#{bindings.Number_Trns.hints.tooltip}" id="it8">
+                            <f:validator binding="#{bindings.Number_Trns.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Group_Trns.inputValue}"
+                                      label="#{bindings.Group_Trns.hints.label}" readOnly="true"
+                                      contentStyle="width:250px;" required="#{bindings.Group_Trns.hints.mandatory}"
+                                      columns="#{bindings.Group_Trns.hints.displayWidth}"
+                                      maximumLength="#{bindings.Group_Trns.hints.precision}"
+                                      shortDesc="#{bindings.Group_Trns.hints.tooltip}" id="it10">
+                            <f:validator binding="#{bindings.Group_Trns.validator}"/>
+                        </af:inputText>
+                         <af:inputText value="#{bindings.Trans_Value.inputValue}" readOnly="true" rendered="false"
+                                      label="#{bindings.Trans_Value.hints.label}" contentStyle="width:160px;"
+                                      required="#{bindings.Trans_Value.hints.mandatory}"  autoSubmit="true"
+                                      columns="#{bindings.Trans_Value.hints.displayWidth}"
+                                      maximumLength="#{bindings.Trans_Value.hints.precision}"
+                                      shortDesc="#{bindings.Trans_Value.hints.tooltip}" id="it3"
+                                      partialTriggers="pc2:t1:trans_AllowanceTypeId">
+                            <f:validator binding="#{bindings.Trans_Value.validator}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                </af:panelBox>
+                <af:spacer width="10" height="30" id="s3"/>
+                <af:panelBox showDisclosure="false" inlineStyle="border-color:transparent;" id="pb3">
+                    <af:panelFormLayout id="pfl1" rows="3" maxColumns="2">
+                        <af:inputText value="#{bindings.ExtraDutyAllowanceId.inputValue}" rendered="false"
+                                      label="#{bindings.ExtraDutyAllowanceId.hints.label}" readOnly="true"
+                                      required="#{bindings.ExtraDutyAllowanceId.hints.mandatory}"
+                                      columns="#{bindings.ExtraDutyAllowanceId.hints.displayWidth}"
+                                      disabled="#{pageFlowScope.mode eq 'edit' ? true : false}"
+                                      maximumLength="#{bindings.ExtraDutyAllowanceId.hints.precision}"
+                                      shortDesc="#{bindings.ExtraDutyAllowanceId.hints.tooltip}" id="it6">
+                            <f:validator binding="#{bindings.ExtraDutyAllowanceId.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.ExtraDutyAllowanceId.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.ExtraDutyAllowanceNo.inputValue}"
+                                      label="#{bindings.ExtraDutyAllowanceNo.hints.label}"
+                                      readOnly="true"
+                                      required="#{bindings.ExtraDutyAllowanceNo.hints.mandatory}"
+                                      columns="#{bindings.ExtraDutyAllowanceNo.hints.displayWidth}"
+                                      maximumLength="#{bindings.ExtraDutyAllowanceNo.hints.precision}"
+                                      shortDesc="#{bindings.ExtraDutyAllowanceNo.hints.tooltip}" id="it11">
+                            <f:validator binding="#{bindings.ExtraDutyAllowanceNo.validator}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.TransactionDate.inputValue}"
+                                      label="#{bindings.TransactionDate.hints.label}" autoSubmit="true"
+                                      required="true"                                       
+                                      disabled="true"
+                                      shortDesc="#{bindings.TransactionDate.hints.tooltip}" id="id1">
+                            <f:validator binding="#{bindings.TransactionDate.validator}"/>
+                            <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:inputDate>                         
+                        <af:inputText value="#{bindings.TotAllowanceAmount.inputValue}"
+                                      label="#{bindings.TotAllowanceAmount.hints.label}" disabled="true"
+                                      required="#{bindings.TotAllowanceAmount.hints.mandatory}"
+                                      columns="#{bindings.TotAllowanceAmount.hints.displayWidth}"
+                                      maximumLength="#{bindings.TotAllowanceAmount.hints.precision}"
+                                      shortDesc="#{bindings.TotAllowanceAmount.hints.tooltip}" id="it19"
+                                      partialTriggers="b5 pc2:t1:it13">
+                            <f:validator binding="#{bindings.TotAllowanceAmount.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.TotAllowanceAmount.format}"/>
+                        </af:inputText>
+                        <af:panelLabelAndMessage label="#{bindings.ApprovalStatus.hints.label}" id="plam1">
+                            <af:outputText value="#{bindings.ApprovalStatus.inputValue}"
+                            inlineStyle="color:#{(bindings.ApprovalStatus.inputValue eq 'APPROVED')?'green':(bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL')?'orange':(bindings.ApprovalStatus.inputValue eq 'DRAFT') ? 'black' : 'red'};"
+                                           shortDesc="#{bindings.ApprovalStatus.hints.tooltip}" id="ot2"/>
+                        </af:panelLabelAndMessage>
+                        <af:inputText value="#{bindings.PreviousApprover.inputValue}" label="Previous Approver"
+                                      contentStyle="width:160px;" readOnly="true"
+                                      required="#{bindings.PreviousApprover.hints.mandatory}"
+                                      columns="#{bindings.PreviousApprover.hints.displayWidth}"
+                                      maximumLength="#{bindings.PreviousApprover.hints.precision}"
+                                      shortDesc="#{bindings.PreviousApprover.hints.tooltip}" id="it15">
+                            <f:validator binding="#{bindings.PreviousApprover.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.NextApprover.inputValue}" label="Next Approver"
+                                      contentStyle="width:160px;" readOnly="true"
+                                      required="#{bindings.NextApprover.hints.mandatory}"
+                                      columns="#{bindings.NextApprover.hints.displayWidth}"
+                                      maximumLength="#{bindings.NextApprover.hints.precision}"
+                                      shortDesc="#{bindings.NextApprover.hints.tooltip}" id="it16">
+                            <f:validator binding="#{bindings.NextApprover.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Comments.inputValue}" label="#{bindings.Comments.hints.label}"
+                                      rows="5" autoSubmit="true"
+                                      disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'CANCELLED'
+                                      || bindings.ApprovalStatus.inputValue eq 'PAYROLL ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                      columns="#{bindings.Comments.hints.displayWidth}"                                      
+                                      maximumLength="#{bindings.Comments.hints.precision}"
+                                      shortDesc="#{bindings.Comments.hints.tooltip}" id="it5">
+                            <f:validator binding="#{bindings.Comments.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.ApproverComments.inputValue}"
+                                      label="Approver Comments" rows="5" readOnly="true"
+                                      required="#{bindings.ApproverComments.hints.mandatory}" contentStyle="width:340px;"
+                                      columns="#{bindings.ApproverComments.hints.displayWidth}"
+                                      maximumLength="#{bindings.ApproverComments.hints.precision}"
+                                      shortDesc="#{bindings.ApproverComments.hints.tooltip}" id="it4">
+                            <f:validator binding="#{bindings.ApproverComments.validator}"/>
+                        </af:inputText>
+                        <af:panelLabelAndMessage label="Add Allowance" id="plam6" rendered="false">
+                                    <af:commandImageLink icon="/images/func_add_16_ena.png"   
+                                     disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'CANCELLED'
+                                      || bindings.ApprovalStatus.inputValue eq 'PAYROLL ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                                         action="#{backingBeanScope.AddEditDuty.onCallPopup}"
+                                                         hoverIcon="/images/func_add_16_hov.png" id="cil1"></af:commandImageLink>
+                                </af:panelLabelAndMessage>
+                    </af:panelFormLayout>
+                </af:panelBox>
+                <af:panelBox id="pb4">
+                    <f:facet name="toolbar">
+                     
+                    </f:facet>
+                    <!--<af:table value="#{bindings.DutyAllowanceLinesVo1.collectionModel}" var="row"
+                              rows="#{bindings.DutyAllowanceLinesVo1.rangeSize}"
+                              emptyText="#{bindings.DutyAllowanceLinesVo1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0" rendered="false"
+                              selectedRowKeys="#{bindings.DutyAllowanceLinesVo1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.DutyAllowanceLinesVo1.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.DutyAllowanceLinesVo1.rangeSize}" id="t3"
+                              partialTriggers="::pc1:b2 ::pc1:b4">
+                        <af:column headerText="#{bindings.DutyAllowanceLinesVo1.hints.Trans_AllowanceType.label}"
+                                   id="c8" width="300">
+                            <af:inputComboboxListOfValues id="iclov1" readOnly="true"
+                                                          popupTitle="Search and Select: #{bindings.DutyAllowanceLinesVo1.hints.Trans_AllowanceType.label}"
+                                                          value="#{row.bindings.Trans_AllowanceType.inputValue}"
+                                                          model="#{row.bindings.Trans_AllowanceType.listOfValuesModel}"
+                                                          required="#{bindings.DutyAllowanceLinesVo1.hints.Trans_AllowanceType.mandatory}"
+                                                          columns="#{bindings.DutyAllowanceLinesVo1.hints.Trans_AllowanceType.displayWidth}"
+                                                          shortDesc="#{bindings.DutyAllowanceLinesVo1.hints.Trans_AllowanceType.tooltip}">
+                                <f:validator binding="#{row.bindings.Trans_AllowanceType.validator}"/>
+                            </af:inputComboboxListOfValues>
+                        </af:column>
+                        <af:column headerText="#{bindings.DutyAllowanceLinesVo1.hints.StartDate.label}" id="c9"
+                                   width="150">
+                            <af:inputDate value="#{row.bindings.StartDate.inputValue}" autoSubmit="true" readOnly="true"
+                                          label="#{bindings.DutyAllowanceLinesVo1.hints.StartDate.label}"
+                                          required="#{bindings.DutyAllowanceLinesVo1.hints.StartDate.mandatory}"
+                                          columns="#{bindings.DutyAllowanceLinesVo1.hints.StartDate.displayWidth}"
+                                          shortDesc="#{bindings.DutyAllowanceLinesVo1.hints.StartDate.tooltip}"
+                                          id="id6">
+                                <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.DutyAllowanceLinesVo1.hints.StartDate.format}"/>
+                            </af:inputDate>
+                        </af:column>
+                        <af:column headerText="#{bindings.DutyAllowanceLinesVo1.hints.EndDate.label}" id="c10"
+                                   width="150">
+                            <af:inputDate value="#{row.bindings.EndDate.inputValue}" autoSubmit="true" readOnly="true"
+                                          label="#{bindings.DutyAllowanceLinesVo1.hints.EndDate.label}"
+                                          required="#{bindings.DutyAllowanceLinesVo1.hints.EndDate.mandatory}"
+                                          columns="#{bindings.DutyAllowanceLinesVo1.hints.EndDate.displayWidth}"
+                                          shortDesc="#{bindings.DutyAllowanceLinesVo1.hints.EndDate.tooltip}" id="id7">
+                                <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.DutyAllowanceLinesVo1.hints.EndDate.format}"/>
+                            </af:inputDate>
+                        </af:column>
+                        <af:column headerText="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceDays.label}" id="c11"
+                                   width="200">
+                            <af:inputText value="#{row.bindings.AllowanceDays.inputValue}" autoSubmit="true" readOnly="true"
+                                          label="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceDays.label}"
+                                          required="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceDays.mandatory}"
+                                          columns="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceDays.displayWidth}"
+                                          maximumLength="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceDays.precision}"
+                                          shortDesc="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceDays.tooltip}"
+                                          id="it15" partialTriggers="id6 id7">
+                                <f:validator binding="#{row.bindings.AllowanceDays.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceDays.format}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceRate.label}" id="c12"
+                                   width="200">
+                            <af:inputText value="#{row.bindings.AllowanceRate.inputValue}" readOnly="true"
+                                          label="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceRate.label}"
+                                          required="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceRate.mandatory}"
+                                          columns="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceRate.displayWidth}"
+                                          maximumLength="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceRate.precision}"
+                                          shortDesc="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceRate.tooltip}"
+                                          id="it16">
+                                <f:validator binding="#{row.bindings.AllowanceRate.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceRate.format}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceAmount.label}" id="c13"
+                                   width="200">
+                            <af:inputText value="#{row.bindings.AllowanceAmount.inputValue}" readOnly="true"
+                                          label="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceAmount.label}"
+                                          required="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceAmount.mandatory}"
+                                          columns="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceAmount.displayWidth}"
+                                          maximumLength="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceAmount.precision}"
+                                          shortDesc="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceAmount.tooltip}"
+                                          id="it17" partialTriggers="it17 id6 id7">
+                                <f:validator binding="#{row.bindings.AllowanceAmount.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.DutyAllowanceLinesVo1.hints.AllowanceAmount.format}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.DutyAllowanceLinesVo1.hints.Comments.label}" id="c14"
+                                   width="200">
+                            <af:inputText value="#{row.bindings.Comments.inputValue}" readOnly="true"
+                                          label="#{bindings.DutyAllowanceLinesVo1.hints.Comments.label}"
+                                          required="#{bindings.DutyAllowanceLinesVo1.hints.Comments.mandatory}"
+                                          columns="#{bindings.DutyAllowanceLinesVo1.hints.Comments.displayWidth}"
+                                          maximumLength="#{bindings.DutyAllowanceLinesVo1.hints.Comments.precision}"
+                                          shortDesc="#{bindings.DutyAllowanceLinesVo1.hints.Comments.tooltip}"
+                                          id="it18">
+                                <f:validator binding="#{row.bindings.Comments.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                    </af:table>-->
+                    <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                         <af:toolbar id="t2" flex="100">
+                                <af:commandImageLink icon="/images/func_add_16_ena.png"
+                                    actionListener="#{bindings.CreateInsert.execute}"
+                                    disabled="#{!bindings.CreateInsert.enabled || bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'CANCELLED'
+                                      || bindings.ApprovalStatus.inputValue eq 'PAYROLL ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                              id="b2"
+                                                    />
+                                     <af:commandImageLink actionListener="#{bindings.Delete.execute}" icon="/images/func_remove_16_ena.png"
+                                          disabled="#{!bindings.Delete.enabled || bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'CANCELLED'
+                                      || bindings.ApprovalStatus.inputValue eq 'PAYROLL ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"   id="b4"/>
+                                               </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.DutyAllowanceLinesVo.collectionModel}" var="row"
+                                  rows="#{bindings.DutyAllowanceLinesVo.rangeSize}"
+                                  emptyText="#{bindings.DutyAllowanceLinesVo.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.DutyAllowanceLinesVo.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.DutyAllowanceLinesVo.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.DutyAllowanceLinesVo.rangeSize}" id="t1"
+                                  partialTriggers="::b2 ::b4 :::b6" binding="#{backingBeanScope.AddEditDuty.lineTable}">
+                            <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.Trans_AllowanceType.label}"
+                                       id="c1" width="300">
+                                <af:inputComboboxListOfValues id="trans_AllowanceTypeId" contentStyle="width:250px;"
+                                                              popupTitle="Search and Select: #{bindings.DutyAllowanceLinesVo.hints.Trans_AllowanceType.label}"
+                                                              value="#{row.bindings.Trans_AllowanceType.inputValue}" 
+                                                              model="#{row.bindings.Trans_AllowanceType.listOfValuesModel}"
+                                                              required="#{bindings.DutyAllowanceLinesVo.hints.Trans_AllowanceType.mandatory}"
+                                                              columns="#{bindings.DutyAllowanceLinesVo.hints.Trans_AllowanceType.displayWidth}"
+                                                              disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'CANCELLED'
+                                      || bindings.ApprovalStatus.inputValue eq 'PAYROLL ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}" autoSubmit="true" 
+                                                              shortDesc="#{bindings.DutyAllowanceLinesVo.hints.Trans_AllowanceType.tooltip}"
+                                                              valueChangeListener="#{backingBeanScope.AddEditDuty.onClickAllowancTypValChng}"
+                                                              partialTriggers=":::it2 :::it3 :::pb4"
+                                                              binding="#{backingBeanScope.AddEditDuty.allowanceType}">
+                                    <f:validator binding="#{row.bindings.Trans_AllowanceType.validator}"/>
+                                </af:inputComboboxListOfValues>
+                            </af:column>
+                            <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.StartDate.label}" id="c2"
+                                       width="250">
+                                <af:inputDate value="#{row.bindings.StartDate.inputValue}" autoSubmit="true" contentStyle="width:200px;"
+                                              valueChangeListener="#{backingBeanScope.AddEditDuty.startEndDateVCL}"
+                                              label="#{bindings.DutyAllowanceLinesVo.hints.StartDate.label}" 
+                                              required="#{bindings.DutyAllowanceLinesVo.hints.StartDate.mandatory}"
+                                              columns="#{bindings.DutyAllowanceLinesVo.hints.StartDate.displayWidth}"
+                                              shortDesc="#{bindings.DutyAllowanceLinesVo.hints.StartDate.tooltip}"
+                                              maxValue="#{backingBeanScope.AddEditDuty.currentSystemDate}"
+											  disabledDaysOfWeek="#{row.bindings.Trans_AllowanceType.inputValue eq 'IT Overtime Weekend' || row.bindings.Trans_AllowanceType.inputValue eq 'NYSC Overtime Weekend' || row.bindings.Trans_AllowanceType.inputValue eq 'Overtime Weekend + Lunch'
+ ? 'mon tue wed thu fri':row.bindings.Trans_AllowanceType.inputValue eq 'NYSC Overtime Weekday' || row.bindings.Trans_AllowanceType.inputValue eq 'Overtime Weekday' 
+ || row.bindings.Trans_AllowanceType.inputValue eq 'IT Overtime Weekday' ? 'sat sun' : ''}"
+                                              disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+									  || bindings.ApprovalStatus.inputValue eq 'CANCELLED'
+                                      || bindings.ApprovalStatus.inputValue eq 'PAYROLL ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                              id="id4"  partialTriggers="c1" binding="#{backingBeanScope.AddEditDuty.startDate}"
+											  >
+                                    <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                                    <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.EndDate.label}" id="c3" width="250">
+                                <af:inputDate value="#{row.bindings.EndDate.inputValue}" autoSubmit="true" contentStyle="width:200px;"
+                                              label="#{bindings.DutyAllowanceLinesVo.hints.EndDate.label}" partialTriggers="c1"
+                                              valueChangeListener="#{backingBeanScope.AddEditDuty.startEndDateVCL}"
+                                              required="#{bindings.DutyAllowanceLinesVo.hints.EndDate.mandatory}"
+											  binding="#{backingBeanScope.AddEditDuty.endDate}"
+                                              columns="#{bindings.DutyAllowanceLinesVo.hints.EndDate.displayWidth}" 
+                                              shortDesc="#{bindings.DutyAllowanceLinesVo.hints.EndDate.tooltip}"
+                                              maxValue="#{backingBeanScope.AddEditDuty.currentSystemDate}"
+											  disabledDaysOfWeek="#{row.bindings.Trans_AllowanceType.inputValue eq 'IT Overtime Weekend' || row.bindings.Trans_AllowanceType.inputValue eq 'NYSC Overtime Weekend' || row.bindings.Trans_AllowanceType.inputValue eq 'Overtime Weekend + Lunch'
+ ? 'mon tue wed thu fri':row.bindings.Trans_AllowanceType.inputValue eq 'NYSC Overtime Weekday' || row.bindings.Trans_AllowanceType.inputValue eq 'Overtime Weekday' 
+ || row.bindings.Trans_AllowanceType.inputValue eq 'IT Overtime Weekday' ? 'sat sun' : ''}"
+                                               disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+									  || bindings.ApprovalStatus.inputValue eq 'CANCELLED'
+                                      || bindings.ApprovalStatus.inputValue eq 'PAYROLL ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                              id="id5"  
+											  >
+                                    <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                                    <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.label}" id="c4" width="200">
+                                <af:inputText value="#{row.bindings.AllowanceDays.inputValue}" autoSubmit="true"
+                                              binding="#{backingBeanScope.AddEditDuty.daysCount}" disabled="true"
+                                              label="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.label}"
+                                              required="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.mandatory}"
+                                              columns="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.displayWidth}"
+                                              maximumLength="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.precision}"
+                                              
+                                              shortDesc="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.tooltip}"
+                                              id="it1">
+                                    <f:validator binding="#{row.bindings.AllowanceDays.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.label}" id="c5" width="200">
+                                <af:inputText value="#{row.bindings.AllowanceRate.inputValue}"
+                                              label="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.label}"
+                                              disabled="true"
+                                              required="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.mandatory}"
+                                              columns="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.displayWidth}"
+                                              maximumLength="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.precision}"
+                                              shortDesc="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.tooltip}"
+                                              id="it12">
+                                    <f:validator binding="#{row.bindings.AllowanceRate.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.label}" width="200"
+                                       id="c6">
+                                <af:inputText value="#{row.bindings.AllowanceAmount.inputValue}"
+                                              binding="#{backingBeanScope.AddEditDuty.allowanceAmount}"
+                                              label="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.label}"
+                                              disabled="true"
+                                              required="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.mandatory}"
+                                              columns="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.displayWidth}"
+                                              maximumLength="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.precision}"
+                                              shortDesc="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.tooltip}"
+                                              id="it13" partialTriggers="id4 id5 it13 :::it19">
+                                    <f:validator binding="#{row.bindings.AllowanceAmount.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.Comments.label}" id="c7" width="200">
+                                <af:inputText value="#{row.bindings.Comments.inputValue}"
+                                disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED'
+                                      || bindings.ApprovalStatus.inputValue eq 'CANCELLED'
+                                      || bindings.ApprovalStatus.inputValue eq 'PAYROLL ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                              label="#{bindings.DutyAllowanceLinesVo.hints.Comments.label}"
+                                              required="#{bindings.DutyAllowanceLinesVo.hints.Comments.mandatory}"
+                                              columns="#{bindings.DutyAllowanceLinesVo.hints.Comments.displayWidth}"
+                                              maximumLength="#{bindings.DutyAllowanceLinesVo.hints.Comments.precision}"
+                                              shortDesc="#{bindings.DutyAllowanceLinesVo.hints.Comments.tooltip}"
+                                              id="it14">
+                                    <f:validator binding="#{row.bindings.Comments.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </af:panelBox>
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                          binding="#{backingBeanScope.AddEditDuty.linesPopup}">
+                    <af:dialog id="d1" type="cancel" contentWidth="500">
+                        <f:facet name="buttonBar">
+                            <af:button text="OK" id="b5" actionListener="#{backingBeanScope.AddEditDuty.onClickOk}"
+                                       partialTriggers="it19"/>
+                        </f:facet>
+                        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar">
+                                <!--<af:toolbar id="t2" flex="100">
+                                <af:commandImageLink icon="/images/func_add_16_ena.png"
+                                    actionListener="#{bindings.CreateInsert.execute}"
+                                               disabled="#{!bindings.CreateInsert.enabled}" id="b2"/>
+                                     <af:commandImageLink actionListener="#{bindings.Delete.execute}" icon="/images/func_remove_16_ena.png"
+                                               disabled="#{!bindings.Delete.enabled}" id="b4"/>
+                                </af:toolbar>-->
+                            </f:facet>
+                            <f:facet name="statusbar"/>
+                            <!--<af:table value="#{bindings.DutyAllowanceLinesVo.collectionModel}" var="row"
+                                      rows="#{bindings.DutyAllowanceLinesVo.rangeSize}"
+                                      emptyText="#{bindings.DutyAllowanceLinesVo.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      rowBandingInterval="0"
+                                      selectedRowKeys="#{bindings.DutyAllowanceLinesVo.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.DutyAllowanceLinesVo.collectionModel.makeCurrent}"
+                                      rowSelection="single" fetchSize="#{bindings.DutyAllowanceLinesVo.rangeSize}"
+                                      id="t1" partialTriggers="::b2 ::b4">
+                                <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.Trans_AllowanceType.label}"
+                                           id="c1" width="200">
+                                    <af:inputComboboxListOfValues id="trans_AllowanceTypeId" contentStyle="width:180px;"
+                                                                  popupTitle="Search and Select: #{bindings.DutyAllowanceLinesVo.hints.Trans_AllowanceType.label}"
+                                                                  value="#{row.bindings.Trans_AllowanceType.inputValue}"
+                                                                  model="#{row.bindings.Trans_AllowanceType.listOfValuesModel}"
+                                                                  required="#{bindings.DutyAllowanceLinesVo.hints.Trans_AllowanceType.mandatory}"
+                                                                  columns="#{bindings.DutyAllowanceLinesVo.hints.Trans_AllowanceType.displayWidth}"
+                                                                  shortDesc="#{bindings.DutyAllowanceLinesVo.hints.Trans_AllowanceType.tooltip}">
+                                        <f:validator binding="#{row.bindings.Trans_AllowanceType.validator}"/>
+                                    </af:inputComboboxListOfValues>
+                                </af:column>
+                                <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.StartDate.label}" id="c2"
+                                           width="100">
+                                    <af:inputDate value="#{row.bindings.StartDate.inputValue}" autoSubmit="true"
+                                     valueChangeListener="#{backingBeanScope.AddEditDuty.startEndDateVCL}"
+                                                  label="#{bindings.DutyAllowanceLinesVo.hints.StartDate.label}"
+                                                  required="#{bindings.DutyAllowanceLinesVo.hints.StartDate.mandatory}"
+                                                  columns="#{bindings.DutyAllowanceLinesVo.hints.StartDate.displayWidth}"
+                                                  shortDesc="#{bindings.DutyAllowanceLinesVo.hints.StartDate.tooltip}"
+                                                  id="id4">
+                                        <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                                        <af:convertDateTime pattern="#{bindings.DutyAllowanceLinesVo.hints.StartDate.format}"/>
+                                    </af:inputDate>
+                                </af:column>
+                                <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.EndDate.label}" id="c3">
+                                    <af:inputDate value="#{row.bindings.EndDate.inputValue}" autoSubmit="true"
+                                                  label="#{bindings.DutyAllowanceLinesVo.hints.EndDate.label}"
+                                                   valueChangeListener="#{backingBeanScope.AddEditDuty.startEndDateVCL}"
+                                                  required="#{bindings.DutyAllowanceLinesVo.hints.EndDate.mandatory}"
+                                                  columns="#{bindings.DutyAllowanceLinesVo.hints.EndDate.displayWidth}"
+                                                  shortDesc="#{bindings.DutyAllowanceLinesVo.hints.EndDate.tooltip}"
+                                                  id="id5">
+                                        <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                                        <af:convertDateTime pattern="#{bindings.DutyAllowanceLinesVo.hints.EndDate.format}"/>
+                                    </af:inputDate>
+                                </af:column>
+                                <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.label}"
+                                           id="c4">
+                                    <af:inputText value="#{row.bindings.AllowanceDays.inputValue}" autoSubmit="true"
+                                     binding="#{backingBeanScope.AddEditDuty.daysCount}" disabled="true"
+                                                  label="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.label}"
+                                                  required="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.mandatory}"
+                                                  columns="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.displayWidth}"
+                                                  maximumLength="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.precision}"
+                                                  shortDesc="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.tooltip}"
+                                                  id="it1">
+                                        <f:validator binding="#{row.bindings.AllowanceDays.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.DutyAllowanceLinesVo.hints.AllowanceDays.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.label}"
+                                           id="c5">
+                                    <af:inputText value="#{row.bindings.AllowanceRate.inputValue}"
+                                                  label="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.label}"
+                                                  disabled="true"
+                                                  required="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.mandatory}"
+                                                  columns="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.displayWidth}"
+                                                  maximumLength="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.precision}"
+                                                  shortDesc="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.tooltip}"
+                                                  id="it12">
+                                        <f:validator binding="#{row.bindings.AllowanceRate.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.DutyAllowanceLinesVo.hints.AllowanceRate.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.label}"
+                                           id="c6">
+                                    <af:inputText value="#{row.bindings.AllowanceAmount.inputValue}"
+                                     binding="#{backingBeanScope.AddEditDuty.allowanceAmount}"
+                                                  label="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.label}"
+                                                  disabled="true"
+                                                  required="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.mandatory}"
+                                                  columns="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.displayWidth}"
+                                                  maximumLength="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.precision}"
+                                                  shortDesc="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.tooltip}"
+                                                  id="it13" partialTriggers="id4 id5 it13">
+                                        <f:validator binding="#{row.bindings.AllowanceAmount.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.DutyAllowanceLinesVo.hints.AllowanceAmount.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.DutyAllowanceLinesVo.hints.Comments.label}" id="c7">
+                                    <af:inputText value="#{row.bindings.Comments.inputValue}"
+                                                  label="#{bindings.DutyAllowanceLinesVo.hints.Comments.label}"
+                                                  required="#{bindings.DutyAllowanceLinesVo.hints.Comments.mandatory}"
+                                                  columns="#{bindings.DutyAllowanceLinesVo.hints.Comments.displayWidth}"
+                                                  maximumLength="#{bindings.DutyAllowanceLinesVo.hints.Comments.precision}"
+                                                  shortDesc="#{bindings.DutyAllowanceLinesVo.hints.Comments.tooltip}"
+                                                  id="it14">
+                                        <f:validator binding="#{row.bindings.Comments.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                            </af:table>-->
+                        </af:panelCollection>
+                    </af:dialog>
+                </af:popup>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

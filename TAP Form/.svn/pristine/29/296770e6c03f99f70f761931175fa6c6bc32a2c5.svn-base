@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelGroupLayout layout="vertical" id="pgl3">
+                <af:panelHeader text="TAP Employee Donation Form" id="ph2">
+                    
+                            <af:query id="qryId1" headerText="Search" disclosed="true"
+                                      value="#{bindings.SearchVCQuery.queryDescriptor}"
+                                      model="#{bindings.SearchVCQuery.queryModel}"
+                                      queryListener="#{bindings.SearchVCQuery.processQuery}"
+                                      queryOperationListener="#{bindings.SearchVCQuery.processQueryOperation}"/>
+                    </af:panelHeader>
+                    <af:panelBox id="pb1" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2" flex="1">
+                                <af:panelGroupLayout id="pgl1" layout="horizontal" halign="right">
+                                    <af:link id="cil3" icon="/images/func_add_16_ena.png"
+                                             disabledIcon="/images/func_add_16_dis.png"
+                                             depressedIcon="/images/func_add_16_act.png"
+                                             hoverIcon="/images/func_add_16_hov.png" partialSubmit="true"
+                                             action="addEdit" disabled="#{sessionScope.assignmentType eq 'E'
+                                               || sessionScope.assignmentType eq 'ET' ? false : true}">
+                                        <af:setPropertyListener from="#{'add'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/>
+                                        <af:setPropertyListener from="#{null}" to="#{pageFlowScope.headerId}"
+                                                                type="action"/>
+                                    </af:link>
+                                    <af:spacer width="10" height="10" id="s1"/>
+                                    <af:link hoverIcon="/images/func_pencil_16_hov.png" action="addEdit"
+                                             depressedIcon="/images/func_pencil_16_act.png"
+                                             icon="/images/func_pencil_16_ena.png" partialSubmit="true"
+                                             disabledIcon="/images/func_pencil_16_dis.png" id="l2"
+                                             actionListener="#{backingBeanScope.SearchTapEmpForm.onClickEdit}" disabled="#{sessionScope.assignmentType  eq 'E'
+                                               || sessionScope.assignmentType  eq 'ET' ? false : true}">
+                                        <af:setPropertyListener from="#{'edit'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/>
+                                        <af:setPropertyListener from="#{bindings.TapEmpFormId.inputValue}"
+                                                                to="#{pageFlowScope.headerId}" type="action"/>
+                                    </af:link>
+                                    <af:spacer width="10" height="10" id="s2"/>
+                                    <af:link actionListener="#{backingBeanScope.SearchTapEmpForm.onClickDelete}"
+                                             icon="/images/func_remove_16_ena.png"
+                                             hoverIcon="/images/func_remove_16_hov.png"
+                                             depressedIcon="/images/func_report_16_act.png"
+                                             disabledIcon="/images/func_remove_16_dis.png" disabled="#{sessionScope.assignmentType eq 'E'
+                                               || sessionScope.assignmentType eq 'ET' ? false : true}"
+                                             partialSubmit="true" id="l1"></af:link>
+                                    <af:spacer width="10" height="10" id="s3"/>
+                                    <af:outputText rendered="false" value="#{sessionScope.assignmentType}" id="ot3"/>
+                                </af:panelGroupLayout>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.XXSSHR_TAP_EMP_FORM_VO.collectionModel}" var="row"
+                                  rows="#{bindings.XXSSHR_TAP_EMP_FORM_VO.rangeSize}"
+                                  emptyText="#{bindings.XXSSHR_TAP_EMP_FORM_VO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" scrollPolicy="page"
+                                  selectedRowKeys="#{bindings.XXSSHR_TAP_EMP_FORM_VO.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.XXSSHR_TAP_EMP_FORM_VO.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.XXSSHR_TAP_EMP_FORM_VO.rangeSize}" id="t1"
+                                  partialTriggers="::l1">
+                            <af:column headerText="Request No" id="c1" width="150" align="center">
+                                <af:outputText value="#{row.TapEmpFormNo}"
+                                               shortDesc="#{bindings.XXSSHR_TAP_EMP_FORM_VO.hints.TapEmpFormNo.tooltip}"
+                                               id="ot1"/>
+                            </af:column>
+                            <af:column headerText="Employee Name" id="c5" width="200" align="center">
+                                <af:outputText value="#{row.Name_Trns}"
+                                               shortDesc="#{bindings.XXSSHR_TAP_EMP_FORM_VO.hints.Name_Trns.tooltip}"
+                                               id="ot4"/>
+                            </af:column>
+                            <af:column headerText="Business Group" id="c2" width="300" align="center">
+                                <af:outputText value="#{row.Group_Trns}"
+                                               shortDesc="#{bindings.XXSSHR_TAP_EMP_FORM_VO.hints.Group_Trns.tooltip}"
+                                               id="ot5"/>
+                            </af:column>
+                            <af:column headerText="Status" id="c3" width="200" align="center">
+                                <af:outputText value="#{row.ApprovalStatus}"
+                                inlineStyle="color:#{(row.ApprovalStatus eq 'SUBMITTED')?'green':(row.ApprovalStatus eq 'SUBMITTED FOR APPROVAL')?'orange':(row.ApprovalStatus eq 'DRAFT') ? 'black' : 'red'};"
+                                               shortDesc="#{bindings.XXSSHR_TAP_EMP_FORM_VO.hints.ApprovalStatus.tooltip}"
+                                               id="ot6"/>
+                            </af:column>
+                            <af:column headerText="Comments" id="c4" width="300" align="center">
+                                <af:outputText value="#{row.Comments}"
+                                               shortDesc="#{bindings.XXSSHR_TAP_EMP_FORM_VO.hints.Comments.tooltip}"
+                                               id="ot2"/>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </af:panelBox>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

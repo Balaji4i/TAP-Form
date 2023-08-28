@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="addEditPayrollPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Payroll_VO" RangeSize="25" DataControl="Oando_AMDataControl" id="Payroll_VOIterator"/>
+    <searchRegion Criteria="search_VC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="Payroll_VOIterator" id="searchVCQuery"/>
+    <iterator Binds="Payroll_ROVO" RangeSize="25" DataControl="Oando_AMDataControl" id="Payroll_ROVOIterator"/>
+    <iterator Binds="DutyAllowance_VO1" RangeSize="10" DataControl="Oando_AMDataControl" id="DutyAllowance_VOIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Payroll_VOIterator" id="Payroll_VO">
+      <nodeDefinition DefName="model.vo.Payroll_VO" Name="Payroll_VO0">
+        <AttrNames>
+          <Item Value="EmployeeName"/>
+          <Item Value="EmployeeNumber"/>
+          <Item Value="AllowanceDays"/>
+          <Item Value="PayrollStatus"/>
+          <Item Value="EffectiveDate"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="ElementName"/>
+          <Item Value="ElementValue"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <tree IterBinding="Payroll_ROVOIterator" id="Payroll_ROVO">
+      <nodeDefinition DefName="model.ro.Payroll_ROVO" Name="Payroll_ROVO0">
+        <AttrNames>
+          <Item Value="ExtraDutyAllowanceNo"/>
+          <Item Value="PersonNumber"/>
+          <Item Value="FullName"/>
+          <Item Value="EmailAddress"/>
+          <Item Value="BusinessUnitName"/>
+          <Item Value="RequestDate"/>
+          <Item Value="AllowanceType"/>
+          <Item Value="AllowanceRate"/>
+          <Item Value="ElementName"/>
+          <Item Value="ApprovalStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="ApprovalStatus">
+      <AttrNames>
+        <Item Value="ApprovalStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Payroll_ROVOIterator" id="ExtraDutyAllowanceId">
+      <AttrNames>
+        <Item Value="ExtraDutyAllowanceId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Payroll_ROVOIterator" id="PersonNumber">
+      <AttrNames>
+        <Item Value="PersonNumber"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

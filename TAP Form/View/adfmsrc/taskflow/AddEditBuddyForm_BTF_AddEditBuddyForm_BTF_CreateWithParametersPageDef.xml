@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="AddEditBuddyForm_BTF_AddEditBuddyForm_BTF_CreateWithParametersPageDef" Package="taskflow"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XxsshrKnowBuddyCareVO" RangeSize="10" DataControl="Oando_AMDataControl"
+              id="XxsshrKnowBuddyCareVOIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="XxsshrKnowBuddyCareVOIterator" id="CreateWithParams"
+            InstanceName="Oando_AMDataControl.XxsshrKnowBuddyCareVO" DataControl="Oando_AMDataControl"
+            RequiresUpdateModel="true" Action="createWithParams">
+      <NamedData NDName="BusinessUnitId" NDValue="#{sessionScope.orgId}" NDType="java.lang.String"/>
+      <NamedData NDName="PersonId" NDValue="#{sessionScope.personId}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

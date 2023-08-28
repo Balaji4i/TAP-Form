@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AddEditDutyPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DutyAllowance_VO" RangeSize="25" DataControl="Oando_AMDataControl" id="DutyAllowance_VOIterator"/>
+    <iterator Binds="DutyAllowanceLinesVo" RangeSize="25" DataControl="Oando_AMDataControl"
+              id="DutyAllowanceLinesVoIterator"/>
+    <iterator id="ExtraDutyAllowanceROVOIterator" Binds="ExtraDutyAllowanceROVO" DataControl="Oando_AMDataControl"
+              RangeSize="25"/>
+  </executables>
+  <bindings>
+    <!--<listOfValues IterBinding="DutyAllowance_VOIterator" StaticList="false" Uses="LOV_Trans_Allowance"
+                  id="Trans_Allowance"/>-->
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="TransactionDate">
+      <AttrNames>
+        <Item Value="TransactionDate"/>
+      </AttrNames>
+    </attributeValues>
+    <!--<attributeValues IterBinding="DutyAllowance_VOIterator" id="AllowanceRate">
+      <AttrNames>
+        <Item Value="AllowanceRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="StartDate">
+      <AttrNames>
+        <Item Value="StartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="EndDate">
+      <AttrNames>
+        <Item Value="EndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="AllowanceDays">
+      <AttrNames>
+        <Item Value="AllowanceDays"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="AllowanceAmount">
+      <AttrNames>
+        <Item Value="AllowanceAmount"/>
+      </AttrNames>
+    </attributeValues>-->
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="ExtraDutyAllowanceId">
+      <AttrNames>
+        <Item Value="ExtraDutyAllowanceId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="Name_Trns">
+      <AttrNames>
+        <Item Value="Name_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="Number_Trns">
+      <AttrNames>
+        <Item Value="Number_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="Email_Trns">
+      <AttrNames>
+        <Item Value="Email_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="Group_Trns">
+      <AttrNames>
+        <Item Value="Group_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <!--<listOfValues IterBinding="DutyAllowance_VOIterator" StaticList="false" Uses="LOV_AllowanceType"
+                  id="AllowanceType"/>-->
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="ApprovalStatus">
+      <AttrNames>
+        <Item Value="ApprovalStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="ExtraDutyAllowanceNo">
+      <AttrNames>
+        <Item Value="ExtraDutyAllowanceNo"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="DutyAllowanceLinesVoIterator" id="DutyAllowanceLinesVo">
+      <nodeDefinition DefName="model.vo.DutyAllowanceLinesVo" Name="DutyAllowanceLinesVo0">
+        <AttrNames>
+          <Item Value="Trans_AllowanceType"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="AllowanceDays"/>
+          <Item Value="AllowanceRate"/>
+          <Item Value="AllowanceAmount"/>
+          <Item Value="Comments"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="DutyAllowanceLinesVoIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="DutyAllowanceLinesVoIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree IterBinding="DutyAllowanceLinesVoIterator" id="DutyAllowanceLinesVo1">
+      <nodeDefinition DefName="model.vo.DutyAllowanceLinesVo" Name="DutyAllowanceLinesVo10">
+        <AttrNames>
+          <Item Value="Trans_AllowanceType"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="AllowanceDays"/>
+          <Item Value="AllowanceRate"/>
+          <Item Value="AllowanceAmount"/>
+          <Item Value="Comments"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="TotAllowanceAmount">
+      <AttrNames>
+        <Item Value="TotAllowanceAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="Trans_Cadre">
+      <AttrNames>
+        <Item Value="Trans_Cadre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="Trans_Value">
+      <AttrNames>
+        <Item Value="Trans_Value"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="Trans_AssignmentType">
+      <AttrNames>
+        <Item Value="Trans_AssignmentType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="ApproverComments">
+      <AttrNames>
+        <Item Value="ApproverComments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="PreviousApprover">
+      <AttrNames>
+        <Item Value="PreviousApprover"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DutyAllowance_VOIterator" id="NextApprover">
+      <AttrNames>
+        <Item Value="NextApprover"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

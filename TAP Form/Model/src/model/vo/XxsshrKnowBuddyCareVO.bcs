@@ -1,0 +1,12 @@
+//Groovy Scripts for model.vo.XxsshrKnowBuddyCareVO
+
+package model.vo
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="Employee_View_ROVO", name="pPersonId")
+def pPersonId_Employee_View_ROVO_BindVariable_BoundParameter()
+{
+PersonId
+}
+

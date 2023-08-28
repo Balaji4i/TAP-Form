@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.9.14" id="DataBindings"
+             SeparateXMLFiles="false" Package="view" ClientType="Generic">
+             <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/pages/FilmStrip.jspx" usageId="view_FilmStripPageDef"/>
+    <page path="/fragment/AddEditTravelReq.jsff" usageId="view_AddEditTravelReqPageDef"/>
+    <page path="/fragment/SearchTravelReq.jsff" usageId="view_SearchTravelReqPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditTravelRequest_BTF.xml#AddEditTravelRequest_BTF@CreateInsert"
+          usageId="view_AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_CreateInsertPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditTravelRequest_BTF.xml#AddEditTravelRequest_BTF@ExecuteWithParams"
+          usageId="view_AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_ExecuteWithParamsPageDef"/>
+    <page path="/WEB-INF/taskflow/SearchTravelReq_BTF.xml#SearchTravelReq_BTF@Execute"
+          usageId="view_SearchTravelReq_BTF_SearchTravelReq_BTF_ExecutePageDef"/>
+    <page path="/fragment/AddEditWell.jsff" usageId="view_AddEditWellPageDef"/>
+    <page path="/fragment/SearchWell.jsff" usageId="view_SearchWellPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditWellHdrDtl.xml#AddEditWellHdrDtl@ExecuteWithParams"
+          usageId="view_AddEditWellHdrDtl_AddEditWellHdrDtl_ExecuteWithParamsPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditWellHdrDtl.xml#AddEditWellHdrDtl@CreateInsert"
+          usageId="view_AddEditWellHdrDtl_AddEditWellHdrDtl_CreateInsertPageDef"/>
+    <page path="/WEB-INF/taskflow/SearchWellHdrDtl_BTF.xml#SearchWellHdrDtl_BTF@Execute"
+          usageId="view_SearchWellHdrDtl_BTF_SearchWellHdrDtl_BTF_ExecutePageDef"/>
+    <page path="/fragment/addEditUop.jsff" usageId="view_addEditUopPageDef"/>
+    <page path="/fragment/searchUop.jsff" usageId="view_searchUopPageDef"/>
+    <page path="/WEB-INF/taskflow/SearchUop_BTF.xml#SearchUop_BTF@Execute"
+          usageId="view_SearchUop_BTF_SearchUop_BTF_ExecutePageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditUop_BTF.xml#AddEditUop_BTF@CreateInsert"
+          usageId="view_AddEditUop_BTF_AddEditUop_BTF_CreateInsertPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditUop_BTF.xml#AddEditUop_BTF@ExecuteWithParams"
+          usageId="view_AddEditUop_BTF_AddEditUop_BTF_ExecuteWithParamsPageDef"/>
+    <page path="/fragment/addEditCarTransfer.jsff" usageId="view_addEditCarTransferPageDef"/>
+    <page path="/fragment/searchCarTransfer.jsff" usageId="view_searchCarTransferPageDef"/>
+    <page path="/WEB-INF/taskflow/SearchCarTransfer.xml#SearchCarTransfer@Execute"
+          usageId="view_SearchCarTransfer_SearchCarTransfer_ExecutePageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditCarTransfer.xml#AddEditCarTransfer@ExecuteWithParams"
+          usageId="view_AddEditCarTransfer_AddEditCarTransfer_ExecuteWithParamsPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditCarTransfer.xml#AddEditCarTransfer@CreateInsert1"
+          usageId="view_AddEditCarTransfer_AddEditCarTransfer_CreateInsert1PageDef"/>
+    <page path="/WEB-INF/taskflow/SearchDuty_BTF.xml#SearchDuty_BTF@Execute"
+          usageId="view_SearchDuty_BTF_SearchDuty_BTF_ExecutePageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditDuty_BTF.xml#AddEditDuty_BTF@CreateInsert"
+          usageId="view_AddEditDuty_BTF_AddEditDuty_BTF_CreateInsertPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditDuty_BTF.xml#AddEditDuty_BTF@ExecuteWithParams"
+          usageId="view_AddEditDuty_BTF_AddEditDuty_BTF_ExecuteWithParamsPageDef"/>
+    <page path="/fragment/AddEditDuty.jsff" usageId="view_AddEditDutyPageDef"/>
+    <page path="/fragment/SearchDuty.jsff" usageId="view_SearchDutyPageDef"/>
+    <page path="/WEB-INF/taskflow/SearchDuty_BTF.xml#SearchDuty_BTF@filterUser"
+          usageId="view_SearchDuty_BTF_SearchDuty_BTF_filterUserPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditDuty_BTF.xml#AddEditDuty_BTF@CreateWithParameters"
+          usageId="view_AddEditDuty_BTF_AddEditDuty_BTF_CreateWithParametersPageDef"/>
+    <page path="/fragment/addEditPayroll.jsff" usageId="view_addEditPayrollPageDef"/>
+    <page path="/fragment/searchPayroll.jsff" usageId="view_searchPayrollPageDef"/>
+    <page path="/WEB-INF/taskflow/SearchPayroll_BTF.xml#SearchPayroll_BTF@Execute"
+          usageId="view_SearchPayroll_BTF_SearchPayroll_BTF_ExecutePageDef"/>
+    <page path="/WEB-INF/taskflow/SearchBuddyForm_BTF.xml#SearchBuddyForm_BTF@filterUser"
+          usageId="view_SearchBuddyForm_BTF_SearchBuddyForm_BTF_filterUserPageDef"/>
+    <page path="/WEB-INF/taskflow/SearchBuddyForm_BTF.xml#SearchBuddyForm_BTF@Execute"
+          usageId="view_SearchBuddyForm_BTF_SearchBuddyForm_BTF_ExecutePageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditBuddyForm_BTF.xml#AddEditBuddyForm_BTF@CreateWithParameters"
+          usageId="view_AddEditBuddyForm_BTF_AddEditBuddyForm_BTF_CreateWithParametersPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditBuddyForm_BTF.xml#AddEditBuddyForm_BTF@CreateInsert"
+          usageId="view_AddEditBuddyForm_BTF_AddEditBuddyForm_BTF_CreateInsertPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditBuddyForm_BTF.xml#AddEditBuddyForm_BTF@ExecuteWithParams"
+          usageId="view_AddEditBuddyForm_BTF_AddEditBuddyForm_BTF_ExecuteWithParamsPageDef"/>
+    <page path="/fragment/SearchBuddyForm.jsff" usageId="view_SearchBuddyFormPageDef"/>
+    <page path="/fragment/AddEditBuddyForm.jsff" usageId="view_AddEditBuddyFormPageDef"/>
+    <page path="/WEB-INF/taskflow/SearchTAPEmpForm.xml#SearchTAPEmpForm@Execute"
+          usageId="view_SearchTAPEmpForm_SearchTAPEmpForm_ExecutePageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditTAPEmpForm.xml#AddEditTAPEmpForm@ExecuteWithParams"
+          usageId="view_AddEditTAPEmpForm_AddEditTAPEmpForm_ExecuteWithParamsPageDef"/>
+    <page path="/fragment/SearchTAPEmpForm.jsff" usageId="view_SearchTAPEmpFormPageDef"/>
+    <page path="/fragment/addEditTAPEmpForm.jsff" usageId="view_addEditTAPEmpFormPageDef"/>
+    <page path="/WEB-INF/taskflow/SearchTAPEmpForm.xml#SearchTAPEmpForm@filterUser"
+          usageId="view_SearchTAPEmpForm_SearchTAPEmpForm_filterUserPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_FilmStripPageDef" path="pages.FilmStripPageDef"/>
+    <page id="view_AddEditTravelReqPageDef" path="fragment.AddEditTravelReqPageDef"/>
+    <page id="view_SearchTravelReqPageDef" path="fragment.SearchTravelReqPageDef"/>
+    <page id="view_AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_CreateInsertPageDef"
+          path="taskflow.AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_CreateInsertPageDef"/>
+    <page id="view_AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_ExecuteWithParamsPageDef"
+          path="taskflow.AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_ExecuteWithParamsPageDef"/>
+    <page id="view_SearchTravelReq_BTF_SearchTravelReq_BTF_ExecutePageDef"
+          path="taskflow.SearchTravelReq_BTF_SearchTravelReq_BTF_ExecutePageDef"/>
+    <page id="view_AddEditWellPageDef" path="fragment.AddEditWellPageDef"/>
+    <page id="view_SearchWellPageDef" path="fragment.SearchWellPageDef"/>
+    <page id="view_AddEditWellHdrDtl_AddEditWellHdrDtl_ExecuteWithParamsPageDef"
+          path="taskflow.AddEditWellHdrDtl_AddEditWellHdrDtl_ExecuteWithParamsPageDef"/>
+    <page id="view_AddEditWellHdrDtl_AddEditWellHdrDtl_CreateInsertPageDef"
+          path="taskflow.AddEditWellHdrDtl_AddEditWellHdrDtl_CreateInsertPageDef"/>
+    <page id="view_SearchWellHdrDtl_BTF_SearchWellHdrDtl_BTF_ExecutePageDef"
+          path="taskflow.SearchWellHdrDtl_BTF_SearchWellHdrDtl_BTF_ExecutePageDef"/>
+    <page id="view_addEditUopPageDef" path="fragment.addEditUopPageDef"/>
+    <page id="view_searchUopPageDef" path="fragment.searchUopPageDef"/>
+    <page id="view_SearchUop_BTF_SearchUop_BTF_ExecutePageDef"
+          path="taskflow.SearchUop_BTF_SearchUop_BTF_ExecutePageDef"/>
+    <page id="view_AddEditUop_BTF_AddEditUop_BTF_CreateInsertPageDef"
+          path="taskflow.AddEditUop_BTF_AddEditUop_BTF_CreateInsertPageDef"/>
+    <page id="view_AddEditUop_BTF_AddEditUop_BTF_ExecuteWithParamsPageDef"
+          path="taskflow.AddEditUop_BTF_AddEditUop_BTF_ExecuteWithParamsPageDef"/>
+    <page id="view_addEditCarTransferPageDef" path="fragment.addEditCarTransferPageDef"/>
+    <page id="view_searchCarTransferPageDef" path="fragment.searchCarTransferPageDef"/>
+    <page id="view_SearchCarTransfer_SearchCarTransfer_ExecutePageDef"
+          path="taskflow.SearchCarTransfer_SearchCarTransfer_ExecutePageDef"/>
+    <page id="view_AddEditCarTransfer_AddEditCarTransfer_ExecuteWithParamsPageDef"
+          path="taskflow.AddEditCarTransfer_AddEditCarTransfer_ExecuteWithParamsPageDef"/>
+    <page id="view_AddEditCarTransfer_AddEditCarTransfer_CreateInsert1PageDef"
+          path="taskflow.AddEditCarTransfer_AddEditCarTransfer_CreateInsert1PageDef"/>
+    <page id="view_SearchDuty_BTF_SearchDuty_BTF_ExecutePageDef"
+          path="taskflow.SearchDuty_BTF_SearchDuty_BTF_ExecutePageDef"/>
+    <page id="view_AddEditDuty_BTF_AddEditDuty_BTF_CreateInsertPageDef"
+          path="taskflow.AddEditDuty_BTF_AddEditDuty_BTF_CreateInsertPageDef"/>
+    <page id="view_AddEditDuty_BTF_AddEditDuty_BTF_ExecuteWithParamsPageDef"
+          path="taskflow.AddEditDuty_BTF_AddEditDuty_BTF_ExecuteWithParamsPageDef"/>
+    <page id="view_AddEditDutyPageDef" path="fragment.AddEditDutyPageDef"/>
+    <page id="view_SearchDutyPageDef" path="fragment.SearchDutyPageDef"/>
+    <page id="view_SearchDuty_BTF_SearchDuty_BTF_filterUserPageDef"
+          path="taskflow.SearchDuty_BTF_SearchDuty_BTF_filterUserPageDef"/>
+    <page id="view_AddEditDuty_BTF_AddEditDuty_BTF_CreateWithParametersPageDef"
+          path="taskflow.AddEditDuty_BTF_AddEditDuty_BTF_CreateWithParametersPageDef"/>
+    <page id="view_addEditPayrollPageDef" path="fragment.addEditPayrollPageDef"/>
+    <page id="view_searchPayrollPageDef" path="fragment.searchPayrollPageDef"/>
+    <page id="view_SearchPayroll_BTF_SearchPayroll_BTF_ExecutePageDef"
+          path="taskflow.SearchPayroll_BTF_SearchPayroll_BTF_ExecutePageDef"/>
+    <page id="view_SearchBuddyForm_BTF_SearchBuddyForm_BTF_filterUserPageDef"
+          path="taskflow.SearchBuddyForm_BTF_SearchBuddyForm_BTF_filterUserPageDef"/>
+    <page id="view_SearchBuddyForm_BTF_SearchBuddyForm_BTF_ExecutePageDef"
+          path="taskflow.SearchBuddyForm_BTF_SearchBuddyForm_BTF_ExecutePageDef"/>
+    <page id="view_AddEditBuddyForm_BTF_AddEditBuddyForm_BTF_CreateWithParametersPageDef"
+          path="taskflow.AddEditBuddyForm_BTF_AddEditBuddyForm_BTF_CreateWithParametersPageDef"/>
+    <page id="view_AddEditBuddyForm_BTF_AddEditBuddyForm_BTF_CreateInsertPageDef"
+          path="taskflow.AddEditBuddyForm_BTF_AddEditBuddyForm_BTF_CreateInsertPageDef"/>
+    <page id="view_AddEditBuddyForm_BTF_AddEditBuddyForm_BTF_ExecuteWithParamsPageDef"
+          path="taskflow.AddEditBuddyForm_BTF_AddEditBuddyForm_BTF_ExecuteWithParamsPageDef"/>
+    <page id="view_SearchBuddyFormPageDef" path="fragment.SearchBuddyFormPageDef"/>
+    <page id="view_AddEditBuddyFormPageDef" path="fragment.AddEditBuddyFormPageDef"/>
+    <page id="view_SearchTAPEmpForm_SearchTAPEmpForm_ExecutePageDef"
+          path="taskflow.SearchTAPEmpForm_SearchTAPEmpForm_ExecutePageDef"/>
+    <page id="view_AddEditTAPEmpForm_AddEditTAPEmpForm_ExecuteWithParamsPageDef"
+          path="taskflow.AddEditTAPEmpForm_AddEditTAPEmpForm_ExecuteWithParamsPageDef"/>
+    <page id="view_SearchTAPEmpFormPageDef" path="fragment.SearchTAPEmpFormPageDef"/>
+    <page id="view_addEditTAPEmpFormPageDef" path="fragment.addEditTAPEmpFormPageDef"/>
+    <page id="view_SearchTAPEmpForm_SearchTAPEmpForm_filterUserPageDef"
+          path="taskflow.SearchTAPEmpForm_SearchTAPEmpForm_filterUserPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="Oando_AMDataControl" Package="model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="Oando_AMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

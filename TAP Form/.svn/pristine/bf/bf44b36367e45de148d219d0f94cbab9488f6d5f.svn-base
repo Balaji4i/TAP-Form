@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelGroupLayout layout="vertical" id="pgl2">
+                <af:panelHeader text="Oando Extra Duty Allowance" id="ph1">
+                    <af:query id="qryId1" headerText="Search" disclosed="true"
+                              value="#{bindings.DutyAllowanceVOCriteriaQuery.queryDescriptor}"
+                              model="#{bindings.DutyAllowanceVOCriteriaQuery.queryModel}"
+                              queryListener="#{bindings.DutyAllowanceVOCriteriaQuery.processQuery}"
+                              queryOperationListener="#{bindings.DutyAllowanceVOCriteriaQuery.processQueryOperation}"/>
+                </af:panelHeader>
+                <af:panelBox id="pb1" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2" flex="1">
+                                <af:panelGroupLayout id="pgl1" layout="horizontal" halign="right">
+                                    <af:link id="cil3" icon="/images/func_add_16_ena.png"
+                                    disabledIcon="/images/func_add_16_dis.png" depressedIcon="/images/func_add_16_act.png"
+                                             hoverIcon="/images/func_add_16_hov.png" partialSubmit="true"
+                                             action="addEdit"
+                                          disabled="#{sessionScope.assignmentType eq 'E'
+                                               || sessionScope.assignmentType eq 'ET' ? false : true}"   >
+                                        <af:setPropertyListener from="#{'add'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/>
+                                        <af:setPropertyListener from="#{null}" to="#{pageFlowScope.headerId}"
+                                                                type="action"/>
+                                                                
+                                    </af:link>
+                                    <af:spacer width="10" height="10" id="s1"/>
+                                    <af:link hoverIcon="/images/func_pencil_16_hov.png" action="addEdit"
+                                             depressedIcon="/images/func_pencil_16_act.png"
+                                             icon="/images/func_pencil_16_ena.png" partialSubmit="true"
+                                             disabledIcon="/images/func_pencil_16_dis.png" id="l2"
+                                             actionListener="#{backingBeanScope.SearchDuty.onClickEdit}"
+                                             disabled="#{sessionScope.assignmentType  eq 'E'
+                                               || sessionScope.assignmentType  eq 'ET' ? false : true}" >
+                                        <af:setPropertyListener from="#{'edit'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/>
+                                        <af:setPropertyListener from="#{bindings.ExtraDutyAllowanceId.inputValue}"
+                                                                to="#{pageFlowScope.headerId}" type="action"/>
+                                    </af:link>
+                                    <af:spacer width="10" height="10" id="s2"/>
+                                    <af:link actionListener="#{backingBeanScope.SearchDuty.onClickDelete}"
+                                             icon="/images/func_remove_16_ena.png"
+                                             hoverIcon="/images/func_remove_16_hov.png"
+                                             depressedIcon="/images/func_report_16_act.png"
+                                             disabledIcon="/images/func_remove_16_dis.png" 
+                                              disabled="#{sessionScope.assignmentType eq 'E'
+                                               || sessionScope.assignmentType eq 'ET' ? false : true}"
+                                             partialSubmit="true" id="l3"></af:link>
+                                              <af:spacer width="10" height="10" id="s3"/>
+                                  <af:outputText rendered="false" value="#{sessionScope.assignmentType}" id="ot3"/> 
+                                </af:panelGroupLayout>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.DutyAllowance_VO.collectionModel}" var="row"
+                                  rows="#{bindings.DutyAllowance_VO.rangeSize}"
+                                  emptyText="#{bindings.DutyAllowance_VO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" scrollPolicy="page"
+                                  selectedRowKeys="#{bindings.DutyAllowance_VO.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.DutyAllowance_VO.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.DutyAllowance_VO.rangeSize}" id="t1">                           
+                            <af:column headerText="#{bindings.DutyAllowance_VO.hints.ExtraDutyAllowanceNo.label}"
+                                       align="center" width="220" id="c9">
+                                <af:outputText value="#{row.ExtraDutyAllowanceNo}"
+                                               shortDesc="#{bindings.DutyAllowance_VO.hints.ExtraDutyAllowanceNo.tooltip}"
+                                               id="ot9"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.DutyAllowance_VO.hints.TotAllowanceAmount.label}"
+                           align="center" width="230" id="c2">
+                                <af:outputText value="#{row.TotAllowanceAmount}"
+                                               shortDesc="#{bindings.DutyAllowance_VO.hints.TotAllowanceAmount.tooltip}"
+                                               id="ot1">
+                                    <af:convertNumber minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.DutyAllowance_VO.hints.ApprovalStatus.label}"
+                                       align="center" width="230" id="c8">
+                                <af:outputText value="#{row.ApprovalStatus}"
+                                               inlineStyle="color:#{(row.ApprovalStatus eq 'APPROVED')?'green':(row.ApprovalStatus eq 'SUBMITTED FOR APPROVAL')?'orange':(row.ApprovalStatus eq 'DRAFT') ? 'black' : 'red'};"
+                                               shortDesc="#{bindings.DutyAllowance_VO.hints.ApprovalStatus.tooltip}"
+                                               id="ot8"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.DutyAllowance_VO.hints.TransactionDate.label}" 
+                            align="center" width="230" id="c3">
+                                <af:outputText value="#{row.TransactionDate}"
+                                               shortDesc="#{bindings.DutyAllowance_VO.hints.TransactionDate.tooltip}"
+                                               id="ot2">
+                                    <af:convertDateTime pattern="#{bindings.DutyAllowance_VO.hints.TransactionDate.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.DutyAllowance_VO.hints.Trans_Allowance.label}" id="c1"
+                                      rendered="false" align="center" width="230">
+                                <af:outputText value="#{row.Trans_Allowance}"
+                                               shortDesc="#{bindings.DutyAllowance_VO.hints.Trans_Allowance.tooltip}"
+                                               id="ot6"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.DutyAllowance_VO.hints.Comments.label}" id="c7"
+                                       align="center" width="230">
+                                <af:outputText value="#{row.Comments}"
+                                               shortDesc="#{bindings.DutyAllowance_VO.hints.Comments.tooltip}"
+                                               id="ot4"/>
+                            </af:column>                          
+                        </af:table>
+                    </af:panelCollection>
+                </af:panelBox>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

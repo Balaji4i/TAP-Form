@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="SearchDuty_BTF_SearchDuty_BTF_ExecutePageDef" Package="taskflow" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="DutyAllowance_VO" RangeSize="25" DataControl="Oando_AMDataControl" id="DutyAllowance_VOIterator"
+              Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="DutyAllowance_VOIterator" id="Execute" RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

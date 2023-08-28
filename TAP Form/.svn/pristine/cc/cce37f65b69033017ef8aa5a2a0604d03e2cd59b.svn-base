@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AddEditBuddyFormPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XxsshrKnowBuddyCareVO" RangeSize="10" DataControl="Oando_AMDataControl"
+              id="XxsshrKnowBuddyCareVOIterator"/>
+    <iterator Binds="XssshrKbcPeriodVO" RangeSize="25" DataControl="Oando_AMDataControl"
+              id="XssshrKbcPeriodVOIterator"/>
+  </executables>
+  <bindings>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="KnowBuddyCareId">
+      <AttrNames>
+        <Item Value="KnowBuddyCareId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="TransactionDate">
+      <AttrNames>
+        <Item Value="TransactionDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="Name_Trns">
+      <AttrNames>
+        <Item Value="Name_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="Number_Trns">
+      <AttrNames>
+        <Item Value="Number_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="Email_Trns">
+      <AttrNames>
+        <Item Value="Email_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="Group_Trns">
+      <AttrNames>
+        <Item Value="Group_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="Trans_Cadre">
+      <AttrNames>
+        <Item Value="Trans_Cadre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="Trans_Value">
+      <AttrNames>
+        <Item Value="Trans_Value"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="Trans_AssignmentType">
+      <AttrNames>
+        <Item Value="Trans_AssignmentType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="KnowBuddyCareNo">
+      <AttrNames>
+        <Item Value="KnowBuddyCareNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="ApprovalStatus">
+      <AttrNames>
+        <Item Value="ApprovalStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="PersonId">
+      <AttrNames>
+        <Item Value="PersonId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="BusinessUnitId">
+      <AttrNames>
+        <Item Value="BusinessUnitId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="PreviousApprover">
+      <AttrNames>
+        <Item Value="PreviousApprover"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="NextApprover">
+      <AttrNames>
+        <Item Value="NextApprover"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="ApproverComments">
+      <AttrNames>
+        <Item Value="ApproverComments"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="XssshrKbcPeriodVOIterator" id="XssshrKbcPeriodVO">
+      <nodeDefinition DefName="model.vo.XssshrKbcPeriodVO" Name="XssshrKbcPeriodVO0">
+        <AttrNames>
+          <Item Value="EffectiveStartDate"/>
+          <Item Value="EffectiveEndDate"/>
+          <Item Value="CurrentAvailablityInd" Binds="CurrentAvailablityInd"/>
+          <Item Value="KbcPeriodId"/>
+          <Item Value="KnowBuddyCareId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="XssshrKbcPeriodVOIterator" id="CurrentAvailablityInd" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="CurrentAvailablityInd"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <action IterBinding="XssshrKbcPeriodVOIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="XssshrKbcPeriodVOIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="XxsshrKnowBuddyCareVOIterator" id="SubscriptionStatus">
+      <AttrNames>
+        <Item Value="SubscriptionStatus"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

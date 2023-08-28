@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="SearchTAPEmpFormPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XXSSHR_TAP_EMP_FORM_VO" RangeSize="5" DataControl="Oando_AMDataControl"
+              id="XXSSHR_TAP_EMP_FORM_VOIterator"/>
+    <searchRegion Criteria="SearchVc" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="XXSSHR_TAP_EMP_FORM_VOIterator" id="SearchVcQuery"/>
+    <searchRegion Criteria="SearchVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="XXSSHR_TAP_EMP_FORM_VOIterator" id="SearchVCQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="XXSSHR_TAP_EMP_FORM_VO">
+      <nodeDefinition DefName="model.vo.XXSSHR_TAP_EMP_FORM_VO" Name="XXSSHR_TAP_EMP_FORM_VO0">
+        <AttrNames>
+          <Item Value="TapEmpFormNo"/>
+          <Item Value="Name_Trns"/>
+          <Item Value="Group_Trns"/>
+          <Item Value="ApprovalStatus"/>
+          <Item Value="Comments"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="TapEmpFormId">
+      <AttrNames>
+        <Item Value="TapEmpFormId"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action IterBinding="XXSSHR_TAP_EMP_FORM_VOIterator" id="Delete"
+            InstanceName="Oando_AMDataControl.XXSSHR_TAP_EMP_FORM_VO" DataControl="Oando_AMDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

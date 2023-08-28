@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="AddEditPayroll">
+    <default-activity>router1</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__6">
+      <name>headerId</name>
+      <value>#{pageFlowScope.headerId}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__5">
+      <managed-bean-name>SearchPayroll</managed-bean-name>
+      <managed-bean-class>view.SearchPayroll</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__8">
+      <managed-bean-name>AddEditPayroll</managed-bean-name>
+      <managed-bean-class>view.AddEditPayroll</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="addEditPayroll">
+      <page>/fragment/addEditPayroll.jsff</page>
+    </view>
+    <router id="router1">
+      <default-outcome>edit</default-outcome>
+    </router>
+    <task-flow-return id="back">
+      <outcome>
+        <name>back</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__1">
+      <from-activity-id>router1</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>edit</from-outcome>
+        <to-activity-id>addEditPayroll</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>addEditPayroll</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>back</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

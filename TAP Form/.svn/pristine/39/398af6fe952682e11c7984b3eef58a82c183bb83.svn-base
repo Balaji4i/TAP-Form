@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <?audit suppress oracle.ide.xml.validation-error?>
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelBox id="pb1" showDisclosure="false">
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow marginTop="5px" height="auto" id="gr1">
+                        <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2">
+                            <af:outputText value="TAP Donation Employee Form" id="ot1"
+                                           inlineStyle="font-size:large; font-weight:bold"/>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+                        <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc4">
+                            <af:panelGroupLayout id="pgl2" layout="horizontal" halign="right">
+                             <af:button text="Unsubscribe"  rendered="false"                                                                           
+                                      id="b2" />
+                                <af:spacer width="10" height="10" id="s5"/>
+                                <af:button text="Save" id="b3"
+                                disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'TAP ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR PAYROLL' ? true : false}"
+                                      actionListener="#{backingBeanScope.AddEditTapEmpForm.onClickSave}"/>
+                                <af:spacer width="10" height="10" id="s2"/>
+                                <af:button text="Submit" id="b6" 
+                                 disabled="#{bindings.ApprovalStatus.inputValue eq ''
+                                      || bindings.ApprovalStatus.inputValue eq null                                 
+                                      || bindings.ApprovalStatus.inputValue eq 'SUBMITTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'TAP ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR PAYROLL'
+                                      ? true : false}"
+                                         action="#{backingBeanScope.AddEditTapEmpForm.onClickSubmitAction}"/>
+                                <af:spacer width="10" height="10" id="s4"/>
+                                <af:button text="Cancel" id="b1"  
+                                           immediate="true" action="back"
+                                           actionListener="#{backingBeanScope.AddEditTapEmpForm.onClickCancel}"></af:button>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+                <af:spacer width="10" height="10" id="s1"/>
+                <af:panelBox showDisclosure="false" inlineStyle="border-color:transparent;" id="pb2">
+                    <f:facet name="toolbar">
+                        <af:panelFormLayout  fieldWidth="450px" id="pfl1" maxColumns="2" rows="2">
+                            <af:inputText value="#{bindings.Name_Trns.inputValue}"
+                                          label="Employee Name" contentStyle="width:250px;"
+                                          required="#{bindings.Name_Trns.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.Name_Trns.hints.displayWidth}"
+                                          maximumLength="#{bindings.Name_Trns.hints.precision}"
+                                          shortDesc="#{bindings.Name_Trns.hints.tooltip}" id="it1">
+                                <f:validator binding="#{bindings.Name_Trns.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.Number_Trns.inputValue}" readOnly="true"
+                                          label="Employee Number" contentStyle="width:250px;"
+                                          required="#{bindings.Number_Trns.hints.mandatory}"
+                                          columns="#{bindings.Number_Trns.hints.displayWidth}"
+                                          maximumLength="#{bindings.Number_Trns.hints.precision}"
+                                          shortDesc="#{bindings.Number_Trns.hints.tooltip}" id="it2">
+                                <f:validator binding="#{bindings.Number_Trns.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.Email_Trns.inputValue}" readOnly="true"
+                                          label="Email Address" contentStyle="width:250px;"
+                                          required="#{bindings.Email_Trns.hints.mandatory}"
+                                          columns="#{bindings.Email_Trns.hints.displayWidth}"
+                                          maximumLength="#{bindings.Email_Trns.hints.precision}"
+                                          shortDesc="#{bindings.Email_Trns.hints.tooltip}" id="it3">
+                                <f:validator binding="#{bindings.Email_Trns.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.Group_Trns.inputValue}" readOnly="true"
+                                          label="Business Group" contentStyle="width:250px;"
+                                          required="#{bindings.Group_Trns.hints.mandatory}"
+                                          columns="#{bindings.Group_Trns.hints.displayWidth}"
+                                          maximumLength="#{bindings.Group_Trns.hints.precision}"
+                                          shortDesc="#{bindings.Group_Trns.hints.tooltip}" id="it4">
+                                <f:validator binding="#{bindings.Group_Trns.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.Trans_Cadre.inputValue}"
+                                          label="Cadre" readOnly="true"
+                                          required="#{bindings.Trans_Cadre.hints.mandatory}"
+                                          columns="#{bindings.Trans_Cadre.hints.displayWidth}"
+                                          maximumLength="#{bindings.Trans_Cadre.hints.precision}"
+                                          shortDesc="#{bindings.Trans_Cadre.hints.tooltip}" id="it12"
+                                          contentStyle="width:250px;">
+                                <f:validator binding="#{bindings.Trans_Cadre.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.ApprovalStatus.inputValue}" readOnly="true"
+                                          label="Status" contentStyle="width:250px;"
+                                          required="#{bindings.ApprovalStatus.hints.mandatory}"
+                                          columns="#{bindings.ApprovalStatus.hints.displayWidth}"
+                                          inlineStyle="color:#{(bindings.ApprovalStatus.inputValue eq 'SUBMITTED')?'green':(bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL')?'orange':(bindings.ApprovalStatus.inputValue eq 'DRAFT') ? 'black' : 'red'};"
+                                          maximumLength="#{bindings.ApprovalStatus.hints.precision}"
+                                          shortDesc="#{bindings.ApprovalStatus.hints.tooltip}" id="it5">
+                                <f:validator binding="#{bindings.ApprovalStatus.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.ApproverComments.inputValue}" readOnly="true"
+                                          label="#{bindings.ApproverComments.hints.label}" contentStyle="width:250px;"
+                                          required="#{bindings.ApproverComments.hints.mandatory}"
+                                       rendered="false"    columns="#{bindings.ApproverComments.hints.displayWidth}"
+                                          maximumLength="#{bindings.ApproverComments.hints.precision}"
+                                          shortDesc="#{bindings.ApproverComments.hints.tooltip}" id="it6">
+                                <f:validator binding="#{bindings.ApproverComments.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.TapEmpFormNo.inputValue}" readOnly="true"
+                                          label="Request No" contentStyle="width:250px;"
+                                          required="#{bindings.TapEmpFormNo.hints.mandatory}"
+                                          columns="#{bindings.TapEmpFormNo.hints.displayWidth}"
+                                          maximumLength="#{bindings.TapEmpFormNo.hints.precision}"
+                                          shortDesc="#{bindings.TapEmpFormNo.hints.tooltip}" id="it7">
+                                <f:validator binding="#{bindings.TapEmpFormNo.validator}"/>
+                            </af:inputText>
+                            <af:inputDate value="#{bindings.TransactionDate.inputValue}" 
+                                          label="Creation Date" contentStyle="width:250px;"
+                                          required="#{bindings.TransactionDate.hints.mandatory}"
+                                          columns="#{bindings.TransactionDate.hints.displayWidth}"
+                                          shortDesc="#{bindings.TransactionDate.hints.tooltip}" id="id1">
+                                <f:validator binding="#{bindings.TransactionDate.validator}"/>
+                                     <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                            </af:inputDate>
+                            <af:inputText value="#{bindings.Comments.inputValue}"
+                                          label="#{bindings.Comments.hints.label}" contentStyle="width:250px;"
+                                          required="#{bindings.Comments.hints.mandatory}"
+                                           disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'TAP ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR PAYROLL'
+                                      ? true : false}"
+                                          columns="#{bindings.Comments.hints.displayWidth}"
+                                          maximumLength="#{bindings.Comments.hints.precision}"
+                                          shortDesc="#{bindings.Comments.hints.tooltip}" id="it8" rows="5">
+                                <f:validator binding="#{bindings.Comments.validator}"/>
+                            </af:inputText>
+                        </af:panelFormLayout>
+                    </f:facet>
+                  
+                     
+                </af:panelBox>
+                <af:spacer width="10" height="10" id="s3"/>
+                 <af:panelBox id="pb4" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <f:facet name="toolbar">                     
+                    </f:facet>
+                     <af:panelCollection  styleClass="AFStretchWidth" id="pc1">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                        <af:toolbar id="t2" flex="100">
+                                <af:panelGroupLayout layout="horizontal" halign="right" id="pgl3">
+                                    <af:link id="cil3" icon="/images/func_add_16_ena.png"
+                                             disabledIcon="/images/func_add_16_dis.png"
+                                             depressedIcon="/images/func_add_16_act.png" 
+                                             disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'TAP ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR PAYROLL'
+                                      ? true : false}"
+                                             hoverIcon="/images/func_add_16_hov.png" partialSubmit="true"
+                                             actionListener="#{bindings.CreateInsert.execute}"></af:link>                                   
+                                    <af:spacer width="10" height="10" id="s6"/>
+                                    <af:link icon="/images/func_remove_16_ena.png"
+                                             hoverIcon="/images/func_remove_16_hov.png"
+                                             depressedIcon="/images/func_report_16_act.png"  
+                                           disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'TAP ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR PAYROLL'
+                                      ? true : false}"
+										disabledIcon="/images/func_remove_16_dis.png" partialSubmit="true" id="l3"
+                                             actionListener="#{bindings.Delete.execute}" partialTriggers="cil3 l3"></af:link>
+                                </af:panelGroupLayout>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.XXSSHR_TAP_EMP_LINES_VO.collectionModel}" var="row"
+                                  rows="#{bindings.XXSSHR_TAP_EMP_LINES_VO.rangeSize}"
+                                  emptyText="#{bindings.XXSSHR_TAP_EMP_LINES_VO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.XXSSHR_TAP_EMP_LINES_VO.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.XXSSHR_TAP_EMP_LINES_VO.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.XXSSHR_TAP_EMP_LINES_VO.rangeSize}"
+                                  id="t1">
+                            <af:column headerText="Active" align="center"
+                                    width="300"   id="c4">
+                                <af:selectBooleanCheckbox value="#{row.bindings.AvailableFlag.inputValue}"
+                                                          label="#{row.bindings.AvailableFlag.label}" autoSubmit="true"
+                                                          disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'TAP ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR PAYROLL'
+                                      ? true : false}"
+                                                          shortDesc="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.AvailableFlag.tooltip}"
+                                                          id="sbc1"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.AvailableFlag.label}"
+                                       id="c1" width="300" rendered="false">
+                                <af:inputText value="#{row.bindings.AvailableFlag.inputValue}"
+                                              label="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.AvailableFlag.label}"
+                                              required="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.AvailableFlag.mandatory}"
+                                              disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'TAP ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR PAYROLL'
+                                      ? true : false}"
+                                              columns="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.AvailableFlag.displayWidth}"
+                                              maximumLength="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.AvailableFlag.precision}"
+                                              shortDesc="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.AvailableFlag.tooltip}"
+                                              id="it9">
+                                    <f:validator binding="#{row.bindings.AvailableFlag.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.Months.label}" id="c5"
+                                 align="center"      width="400">
+                                <af:selectOneChoice value="#{row.bindings.Months.inputValue}"
+                                                    label="#{row.bindings.Months.label}"
+                                                    required="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.Months.mandatory}"
+                                                    shortDesc="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.Months.tooltip}"
+                                                    id="soc1" autoSubmit="true"
+                                                    disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'TAP ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR PAYROLL'
+                                      ? true : false}"
+                                                    valueChangeListener="#{backingBeanScope.AddEditTapEmpForm.onClickMonth}"
+                                                    binding="#{backingBeanScope.AddEditTapEmpForm.monthBind}">
+                                    <f:selectItems value="#{row.bindings.Months.items}" id="si1"/>
+                                    <f:validator binding="#{row.bindings.Months.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column headerText="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.Months.label}" id="c2"
+                                    rendered="false"     width="300">
+                                <af:inputText value="#{row.bindings.Months.inputValue}"
+                                              label="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.Months.label}"
+                                              required="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.Months.mandatory}"
+                                              columns="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.Months.displayWidth}"
+                                              maximumLength="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.Months.precision}"
+                                              shortDesc="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.Months.tooltip}"
+                                              id="it10">
+                                    <f:validator binding="#{row.bindings.Months.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="Donation Amount" align="center"
+                                       id="c3" width="400">
+                                <af:inputText value="#{row.bindings.DonationAmount.inputValue}"
+                                              label="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.DonationAmount.label}"
+                                              disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'TAP ENTRY POSTED'
+                                      || bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR PAYROLL'
+                                      ? true : false}" autoSubmit="true"
+                                              required="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.DonationAmount.mandatory}"
+                                              columns="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.DonationAmount.displayWidth}"
+                                              maximumLength="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.DonationAmount.precision}"
+                                              shortDesc="#{bindings.XXSSHR_TAP_EMP_LINES_VO.hints.DonationAmount.tooltip}"
+                                              id="it11">
+                                    <f:validator binding="#{row.bindings.DonationAmount.validator}"/>
+                                   <af:convertNumber minFractionDigits="2" maxFractionDigits="2" pattern="###,###,###,###"/>
+                                </af:inputText>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                    
+                    </af:panelBox>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

@@ -1,0 +1,43 @@
+//Groovy Scripts for model.eo.XxsshrKnowBuddyCareEO
+
+package model.eo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+
+
+
+@TransientValueExpression(attributeName="KnowBuddyCareNo")
+def KnowBuddyCareNo_ExpressionScript_Expression()
+{
+KnowBuddyCareId
+}
+
+
+@TransientValueExpression(attributeName="KnowBuddyCareId")
+def KnowBuddyCareId_ExpressionScript_Expression()
+{
+new oracle.jbo.server.SequenceImpl("XXSSHR_KNOW_BUDDY_CARE_S",adf.object.getDBTransaction()).getSequenceNumber()
+}
+
+
+@TransientValueExpression(attributeName="CreatedBy")
+def CreatedBy_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+
+
+@TransientValueExpression(attributeName="LastUpdatedBy")
+def LastUpdatedBy_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+
+
+@TransientValueExpression(attributeName="LastUpdateLogin")
+def LastUpdateLogin_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+

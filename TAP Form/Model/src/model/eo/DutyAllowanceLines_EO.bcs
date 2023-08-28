@@ -1,0 +1,26 @@
+//Groovy Scripts for model.eo.DutyAllowanceLines_EO
+
+package model.eo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="EdAllowanceLineId")
+def EdAllowanceLineId_ExpressionScript_Expression()
+{
+new oracle.jbo.server.SequenceImpl("xxsshr_ed_allowance_lines_s",adf.object.getDBTransaction()).getSequenceNumber()
+}
+
+
+@TransientValueExpression(attributeName="CreatedBy")
+def CreatedBy_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+
+
+@TransientValueExpression(attributeName="LastUpdatedBy")
+def LastUpdatedBy_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+

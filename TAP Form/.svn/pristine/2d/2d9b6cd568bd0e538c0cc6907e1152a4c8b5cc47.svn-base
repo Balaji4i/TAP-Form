@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelGroupLayout layout="vertical" id="pgl2">
+                <af:panelHeader text="Oando Buddy Form" id="ph1">
+                            <af:query id="qryId1" headerText="Search" disclosed="true"
+                                      value="#{bindings.XxsshrKnowBuddyCareVCQuery.queryDescriptor}"
+                                      model="#{bindings.XxsshrKnowBuddyCareVCQuery.queryModel}"
+                                      queryListener="#{bindings.XxsshrKnowBuddyCareVCQuery.processQuery}"
+                                      queryOperationListener="#{bindings.XxsshrKnowBuddyCareVCQuery.processQueryOperation}"/>                       
+                </af:panelHeader>
+               <af:panelBox id="pb1" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2" flex="1">
+                                <af:panelGroupLayout id="pgl1" layout="horizontal" halign="right">
+                                    <af:link id="cil3" icon="/images/func_add_16_ena.png"
+                                    disabledIcon="/images/func_add_16_dis.png" depressedIcon="/images/func_add_16_act.png"
+                                             hoverIcon="/images/func_add_16_hov.png" partialSubmit="true"
+                                             action="addEdit" rendered="#{sessionScope.assignmentType eq 'E'
+                                               || sessionScope.assignmentType eq 'ET' ? true : false}"
+                                            disabled="#{backingBeanScope.SearchBuddyForm.disableIcons}"
+                                             partialTriggers="t1:b1">
+                                        <af:setPropertyListener from="#{'add'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/>
+                                        <af:setPropertyListener from="#{null}" to="#{pageFlowScope.headerId}"
+                                                                type="action"/>
+                                           <!-- disabled="#{sessionScope.assignmentType eq 'E'
+                                               || sessionScope.assignmentType eq 'ET' ? false : true}" -->                     
+                                    </af:link>
+                                    <af:spacer width="10" height="10" id="s1"/>
+                                    <af:link hoverIcon="/images/func_pencil_16_hov.png" action="addEdit"
+                                             depressedIcon="/images/func_pencil_16_act.png"
+                                             icon="/images/func_pencil_16_ena.png" partialSubmit="true"
+                                             disabledIcon="/images/func_pencil_16_dis.png" id="l2"
+                                             actionListener="#{backingBeanScope.SearchBuddyForm.onClickEdit}"
+                                             disabled="#{bindings.ApprovalStatus.inputValue eq ''
+                                               || bindings.ApprovalStatus.inputValue eq null
+                                               ? true : false}" >
+                                        <af:setPropertyListener from="#{'edit'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/> 
+                                        <af:setPropertyListener from="#{bindings.KnowBuddyCareId.inputValue}"
+                                                                to="#{pageFlowScope.headerId}" type="action"/>
+                                    </af:link>
+                                    <af:spacer width="10" height="10" id="s2"/>
+                                    <af:link actionListener="#{backingBeanScope.SearchBuddyForm.onClickDelete}"
+                                             icon="/images/func_remove_16_ena.png" rendered="false"
+                                             hoverIcon="/images/func_remove_16_hov.png"
+                                             depressedIcon="/images/func_report_16_act.png"
+                                             disabledIcon="/images/func_remove_16_dis.png" 
+                                              disabled="#{sessionScope.assignmentType eq 'E'
+                                               || sessionScope.assignmentType eq 'ET' ||
+                                               bindings.ApprovalStatus.inputValue ne 'SUBMITTED'
+                                               || bindings.ApprovalStatus.inputValue eq 'UNSUBSCRIBED' ? false : true}"
+                                               
+                                             partialSubmit="true" id="l3"></af:link>
+                                              <af:spacer width="10" height="10" id="s3"/>
+                                  <af:outputText rendered="false" value="#{sessionScope.assignmentType}" id="ot3"/> 
+                                </af:panelGroupLayout>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.XxsshrKnowBuddyCareVO.collectionModel}" var="row"
+                                  rows="#{bindings.XxsshrKnowBuddyCareVO.rangeSize}"
+                                  emptyText="#{bindings.XxsshrKnowBuddyCareVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" scrollPolicy="page"
+                                  selectedRowKeys="#{bindings.XxsshrKnowBuddyCareVO.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.XxsshrKnowBuddyCareVO.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.XxsshrKnowBuddyCareVO.rangeSize}" id="t1">
+                            <af:column headerText="#{bindings.XxsshrKnowBuddyCareVO.hints.KnowBuddyCareId.label}"
+                                  rendered="false"   align="center" width="100"  id="c1">
+                                <af:outputText value="#{row.KnowBuddyCareId}"
+                                               shortDesc="#{bindings.XxsshrKnowBuddyCareVO.hints.KnowBuddyCareId.tooltip}"
+                                               id="ot1">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.XxsshrKnowBuddyCareVO.hints.KnowBuddyCareId.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.XxsshrKnowBuddyCareVO.hints.KnowBuddyCareNo.label}"
+                                     align="center" width="230"  id="c2">
+                                <af:outputText value="#{row.KnowBuddyCareNo}"
+                                               shortDesc="#{bindings.XxsshrKnowBuddyCareVO.hints.KnowBuddyCareNo.tooltip}"
+                                               id="ot2"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.XxsshrKnowBuddyCareVO.hints.Name_Trns.label}"
+                            align="center" width="230" id="c6">
+                                <af:outputText value="#{row.Name_Trns}"
+                                               shortDesc="#{bindings.XxsshrKnowBuddyCareVO.hints.Name_Trns.tooltip}"
+                                               id="ot7"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.XxsshrKnowBuddyCareVO.hints.TransactionDate.label}"
+                                   align="center" width="150"    id="c3">
+                                <af:outputText value="#{row.TransactionDate}"
+                                               shortDesc="#{bindings.XxsshrKnowBuddyCareVO.hints.TransactionDate.tooltip}"
+                                               id="ot4">
+                                    <af:convertDateTime pattern="#{bindings.XxsshrKnowBuddyCareVO.hints.TransactionDate.format}"/>
+                                </af:outputText>
+                            </af:column>
+                              <af:column headerText="#{bindings.XxsshrKnowBuddyCareVO.hints.ApprovalStatus.label}"
+                                    align="center" width="200"  id="c5">
+                                <af:outputText value="#{row.ApprovalStatus}"
+                                               shortDesc="#{bindings.XxsshrKnowBuddyCareVO.hints.ApprovalStatus.tooltip}"
+                                               id="ot6"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.XxsshrKnowBuddyCareVO.hints.Comments.label}" 
+                            align="center" width="230"    id="c4">
+                                <af:outputText value="#{row.Comments}"
+                                               shortDesc="#{bindings.XxsshrKnowBuddyCareVO.hints.Comments.tooltip}"
+                                               id="ot5"/>
+                            </af:column>
+                          <af:column headerText="Delete" align="center" id="c100">
+                                      <af:button text="Delete"                                    
+                                               actionListener="#{backingBeanScope.SearchBuddyForm.onClickDelete}"
+                                               partialSubmit="true"
+                                               disabled="#{row.ApprovalStatus eq 'SUBMITTED' || row.ApprovalStatus eq 'UNSUBSCRIBED'}"
+                                                 id="b1"/>
+                              
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </af:panelBox>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

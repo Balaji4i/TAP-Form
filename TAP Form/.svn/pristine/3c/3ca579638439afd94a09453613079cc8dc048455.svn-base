@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="testingFlow">
+    <default-activity>view1</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="view1">
+      <page>/fragment/view1.jsff</page>
+    </view>
+    <use-page-fragments/>
+    <visibility>
+      <url-invoke-allowed/>
+    </visibility>
+  </task-flow-definition>
+</adfc-config>

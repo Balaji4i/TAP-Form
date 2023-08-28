@@ -1,0 +1,12 @@
+//Groovy Scripts for model.vo.DutyAllowanceLinesVo
+
+package model.vo
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="ExtraDutyAllowanceROVO", name="pPersonId")
+def pPersonId_ExtraDutyAllowanceROVO_BindVariable_BoundParameter()
+{
+adf.context.sessionScope.personId
+}
+

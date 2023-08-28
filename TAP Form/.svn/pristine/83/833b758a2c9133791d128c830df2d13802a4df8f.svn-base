@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="SearchTAPEmpForm">
+    <default-activity>filterUser</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__11">
+      <managed-bean-name>mode</managed-bean-name>
+      <managed-bean-class>java.lang.String</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__12">
+      <managed-bean-name>headerId</managed-bean-name>
+      <managed-bean-class>java.math.BigDecimal</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__13">
+      <managed-bean-name>FilmStrip</managed-bean-name>
+      <managed-bean-class>com.view.beans.filmStrip.UtilsBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__16">
+      <managed-bean-name>SearchTapEmpForm</managed-bean-name>
+      <managed-bean-class>view.SearchTapEmpForm</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="searchTAPEmpForm">
+      <page>/fragment/SearchTAPEmpForm.jsff</page>
+    </view>
+    <task-flow-call id="AddEditTAPEmpForm">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/AddEditTAPEmpForm.xml</document>
+        <id>AddEditTAPEmpForm</id>
+      </task-flow-reference>
+      <input-parameter id="__14">
+        <name>mode</name>
+        <value>#{pageFlowScope.mode}</value>
+      </input-parameter>
+      <input-parameter id="__15">
+        <name>headerId</name>
+        <value>#{pageFlowScope.headerId}</value>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="hide_FS">
+      <method>#{backingBeanScope.FilmStrip._hideFilmStrip}</method>
+      <outcome>
+        <fixed-outcome>hide</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="show_FS">
+      <method>#{backingBeanScope.FilmStrip._showFilmStrip}</method>
+      <outcome>
+        <fixed-outcome>show</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome>
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="filterUser">
+      <method>#{bindings.filterUser.execute}</method>
+      <outcome>
+        <fixed-outcome>filterUser</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__3">
+      <from-activity-id>hide_FS</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>hide</from-outcome>
+        <to-activity-id>AddEditTAPEmpForm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>AddEditTAPEmpForm</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>Execute</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>Execute</from-outcome>
+        <to-activity-id>show_FS</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>show_FS</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>show</from-outcome>
+        <to-activity-id>searchTAPEmpForm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id>filterUser</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome>filterUser</from-outcome>
+        <to-activity-id>searchTAPEmpForm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__30">
+      <from-activity-id>SearchTAPEmpForm</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome>addEdit</from-outcome>
+        <to-activity-id>hide_FS</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__32">
+      <from-activity-id>searchTAPEmpForm</from-activity-id>
+      <control-flow-case id="__33">
+        <from-outcome>addEdit</from-outcome>
+        <to-activity-id>hide_FS</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

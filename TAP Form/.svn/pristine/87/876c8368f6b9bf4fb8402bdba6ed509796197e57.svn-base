@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelGroupLayout layout="vertical" id="pgl2">
+                <af:panelGroupLayout layout="vertical" id="pgl1">
+                    <af:panelHeader text="Payroll" id="ph1">
+                        <af:query id="qryId1" headerText="Search" disclosed="true"
+                                  value="#{bindings.SearchVCQuery.queryDescriptor}"
+                                  model="#{bindings.SearchVCQuery.queryModel}"
+                                  queryListener="#{bindings.SearchVCQuery.processQuery}"
+                                  queryOperationListener="#{bindings.SearchVCQuery.processQueryOperation}"/>
+                    </af:panelHeader>
+                </af:panelGroupLayout>
+                <af:panelBox id="pb1" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2" flex="1">
+                               
+                                    <af:link hoverIcon="/images/func_pencil_16_hov.png" action="addEdit"
+                                             depressedIcon="/images/func_pencil_16_act.png"
+                                             icon="/images/func_pencil_16_ena.png" partialSubmit="true"
+                                             disabledIcon="/images/func_pencil_16_dis.png" id="l2"
+                                             actionListener="#{backingBeanScope.SearchPayroll.onClickEdit}">
+                                        <af:setPropertyListener from="#{'edit'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/>
+                                        <af:setPropertyListener from="#{bindings.ExtraDutyAllowanceId.inputValue}"
+                                                                to="#{pageFlowScope.headerId}" type="action"/>
+                                                               
+                                    </af:link>
+                                   
+                                
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.Payroll_ROVO.collectionModel}" var="row"
+                                  rows="#{bindings.Payroll_ROVO.rangeSize}"
+                                  emptyText="#{bindings.Payroll_ROVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.Payroll_ROVO.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.Payroll_ROVO.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.Payroll_ROVO.rangeSize}" id="t1">
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.ExtraDutyAllowanceNo.label}" id="c1" width="150">
+                                <af:inputText value="#{row.bindings.ExtraDutyAllowanceNo.inputValue}"
+                                              label="#{bindings.Payroll_ROVO.hints.ExtraDutyAllowanceNo.label}"
+                                              required="#{bindings.Payroll_ROVO.hints.ExtraDutyAllowanceNo.mandatory}"
+                                              columns="#{bindings.Payroll_ROVO.hints.ExtraDutyAllowanceNo.displayWidth}"
+                                              maximumLength="#{bindings.Payroll_ROVO.hints.ExtraDutyAllowanceNo.precision}"
+                                              shortDesc="#{bindings.Payroll_ROVO.hints.ExtraDutyAllowanceNo.tooltip}"
+                                              id="it1">
+                                    <f:validator binding="#{row.bindings.ExtraDutyAllowanceNo.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.PersonNumber.label}" id="c2" width="150">
+                                <af:inputText value="#{row.bindings.PersonNumber.inputValue}"
+                                              label="#{bindings.Payroll_ROVO.hints.PersonNumber.label}"
+                                              required="#{bindings.Payroll_ROVO.hints.PersonNumber.mandatory}"
+                                              columns="#{bindings.Payroll_ROVO.hints.PersonNumber.displayWidth}"
+                                              maximumLength="#{bindings.Payroll_ROVO.hints.PersonNumber.precision}"
+                                              shortDesc="#{bindings.Payroll_ROVO.hints.PersonNumber.tooltip}" id="it2">
+                                    <f:validator binding="#{row.bindings.PersonNumber.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.FullName.label}" id="c3" width="200">
+                                <af:inputText value="#{row.bindings.FullName.inputValue}"
+                                              label="#{bindings.Payroll_ROVO.hints.FullName.label}"
+                                              required="#{bindings.Payroll_ROVO.hints.FullName.mandatory}"
+                                              columns="#{bindings.Payroll_ROVO.hints.FullName.displayWidth}"
+                                              maximumLength="#{bindings.Payroll_ROVO.hints.FullName.precision}"
+                                              shortDesc="#{bindings.Payroll_ROVO.hints.FullName.tooltip}" id="it3">
+                                    <f:validator binding="#{row.bindings.FullName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.EmailAddress.label}" id="c4" width="200">
+                                <af:inputText value="#{row.bindings.EmailAddress.inputValue}"
+                                              label="#{bindings.Payroll_ROVO.hints.EmailAddress.label}"
+                                              required="#{bindings.Payroll_ROVO.hints.EmailAddress.mandatory}"
+                                              columns="#{bindings.Payroll_ROVO.hints.EmailAddress.displayWidth}"
+                                              maximumLength="#{bindings.Payroll_ROVO.hints.EmailAddress.precision}"
+                                              shortDesc="#{bindings.Payroll_ROVO.hints.EmailAddress.tooltip}" id="it4">
+                                    <f:validator binding="#{row.bindings.EmailAddress.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.BusinessUnitName.label}" id="c5" width="200">
+                                <af:inputText value="#{row.bindings.BusinessUnitName.inputValue}"
+                                              label="#{bindings.Payroll_ROVO.hints.BusinessUnitName.label}"
+                                              required="#{bindings.Payroll_ROVO.hints.BusinessUnitName.mandatory}"
+                                              columns="#{bindings.Payroll_ROVO.hints.BusinessUnitName.displayWidth}"
+                                              maximumLength="#{bindings.Payroll_ROVO.hints.BusinessUnitName.precision}"
+                                              shortDesc="#{bindings.Payroll_ROVO.hints.BusinessUnitName.tooltip}"
+                                              id="it5">
+                                    <f:validator binding="#{row.bindings.BusinessUnitName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.RequestDate.label}" id="c6" width="150">
+                                <af:inputDate value="#{row.bindings.RequestDate.inputValue}"
+                                              label="#{bindings.Payroll_ROVO.hints.RequestDate.label}"
+                                              required="#{bindings.Payroll_ROVO.hints.RequestDate.mandatory}"
+                                              columns="#{bindings.Payroll_ROVO.hints.RequestDate.displayWidth}"
+                                              shortDesc="#{bindings.Payroll_ROVO.hints.RequestDate.tooltip}" id="id1">
+                                    <f:validator binding="#{row.bindings.RequestDate.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.Payroll_ROVO.hints.RequestDate.format}"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.AllowanceType.label}" id="c7" width="150">
+                                <af:inputText value="#{row.bindings.AllowanceType.inputValue}"
+                                              label="#{bindings.Payroll_ROVO.hints.AllowanceType.label}"
+                                              required="#{bindings.Payroll_ROVO.hints.AllowanceType.mandatory}"
+                                              columns="#{bindings.Payroll_ROVO.hints.AllowanceType.displayWidth}"
+                                              maximumLength="#{bindings.Payroll_ROVO.hints.AllowanceType.precision}"
+                                              shortDesc="#{bindings.Payroll_ROVO.hints.AllowanceType.tooltip}" id="it6">
+                                    <f:validator binding="#{row.bindings.AllowanceType.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.AllowanceRate.label}" id="c8" width="150">
+                                <af:inputText value="#{row.bindings.AllowanceRate.inputValue}"
+                                              label="#{bindings.Payroll_ROVO.hints.AllowanceRate.label}"
+                                              required="#{bindings.Payroll_ROVO.hints.AllowanceRate.mandatory}"
+                                              columns="#{bindings.Payroll_ROVO.hints.AllowanceRate.displayWidth}"
+                                              maximumLength="#{bindings.Payroll_ROVO.hints.AllowanceRate.precision}"
+                                              shortDesc="#{bindings.Payroll_ROVO.hints.AllowanceRate.tooltip}" id="it7">
+                                    <f:validator binding="#{row.bindings.AllowanceRate.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.Payroll_ROVO.hints.AllowanceRate.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.ElementName.label}" id="c9" width="200">
+                                <af:inputText value="#{row.bindings.ElementName.inputValue}"
+                                              label="#{bindings.Payroll_ROVO.hints.ElementName.label}"
+                                              required="#{bindings.Payroll_ROVO.hints.ElementName.mandatory}"
+                                              columns="#{bindings.Payroll_ROVO.hints.ElementName.displayWidth}"
+                                              maximumLength="#{bindings.Payroll_ROVO.hints.ElementName.precision}"
+                                              shortDesc="#{bindings.Payroll_ROVO.hints.ElementName.tooltip}" id="it8">
+                                    <f:validator binding="#{row.bindings.ElementName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.Payroll_ROVO.hints.ApprovalStatus.label}" id="c10" width="150">
+                                <af:inputText value="#{row.bindings.ApprovalStatus.inputValue}"
+                                              label="#{bindings.Payroll_ROVO.hints.ApprovalStatus.label}"
+                                              required="#{bindings.Payroll_ROVO.hints.ApprovalStatus.mandatory}"
+                                              columns="#{bindings.Payroll_ROVO.hints.ApprovalStatus.displayWidth}"
+                                              maximumLength="#{bindings.Payroll_ROVO.hints.ApprovalStatus.precision}"
+                                              shortDesc="#{bindings.Payroll_ROVO.hints.ApprovalStatus.tooltip}"
+                                              id="it9">
+                                    <f:validator binding="#{row.bindings.ApprovalStatus.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </af:panelBox>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

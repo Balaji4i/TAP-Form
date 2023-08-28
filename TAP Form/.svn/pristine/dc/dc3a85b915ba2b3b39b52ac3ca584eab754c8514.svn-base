@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
+-->
+<menu>
+    <groupNode id="OandoModule" idref="OandoModuleId" label="">
+        <!--Roles-->
+         <itemNode id="TAPForm" label="TAP Form" icon="/images/grid_dot_lg_bank.png"
+                  cardIcon="/images/grid_dot_lg_bank.png" taskMenuSource="/WEB-INF/taskflow/SearchTAPEmpForm.xml"
+                  securedResourceName="/WEB-INF/taskflow/SearchTAPEmpForm.xml" focusViewId="/Oando"
+                  webApp="Oando" applicationStripe="Oando" showOnHomeGrid="true" rendered="true"/>
+                  
+        <itemNode id="TravelRequest" label="Travel Request" icon="/images/grid_dot_household.png"
+                  cardIcon="/images/grid_dot_lg_airplane.png" taskMenuSource="/WEB-INF/taskflow/SearchTravelReq_BTF.xml"
+                  securedResourceName="/WEB-INF/taskflow/SearchTravelReq_BTF.xml" focusViewId="/Oando"
+                  webApp="Oando" applicationStripe="Oando" showOnHomeGrid="true" rendered="false"/>
+                  
+                  <itemNode id="Well" label="Well" icon="/images/grid_dot_household.png"
+                  cardIcon="/images/grid_dot_lg_bankcycle.png" taskMenuSource="/WEB-INF/taskflow/SearchWellHdrDtl_BTF.xml"
+                  securedResourceName="/WEB-INF/taskflow/SearchWellHdrDtl_BTF.xml" focusViewId="/Oando"
+                  webApp="Oando" applicationStripe="Oando" showOnHomeGrid="true" rendered="false"/>
+                  
+                   <itemNode id="UOP" label="Extra Duty" icon="/images/grid_dot_lg_bank.png"
+                  cardIcon="/images/grid_dot_lg_bank.png" taskMenuSource="/WEB-INF/taskflow/SearchDuty_BTF.xml"
+                  securedResourceName="/WEB-INF/taskflow/SearchDuty_BTF.xml" focusViewId="/Oando"
+                  webApp="Oando" applicationStripe="Oando" showOnHomeGrid="true" rendered="false"/>
+                  
+                   <itemNode id="payroll" label="Payroll" icon="/images/grid_dot_lg_bankcycle.png"
+                  cardIcon="/images/grid_dot_lg_bankcycle.png" taskMenuSource="/WEB-INF/taskflow/SearchPayroll_BTF.xml"
+                  securedResourceName="/WEB-INF/taskflow/SearchPayroll_BTF.xml" focusViewId="/Oando"
+                  webApp="Oando" applicationStripe="Oando" showOnHomeGrid="true" rendered="false"/>
+    </groupNode>
+</menu>
